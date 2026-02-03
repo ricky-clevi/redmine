@@ -1,0 +1,438 @@
+/**
+ * Redmine Modern UI - Forms (Phase 3)
+ * 
+ * Modern form element styles using design tokens.
+ */
+
+/* ============================================
+ * FORM LAYOUT
+ * ============================================ */
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-block-end: var(--space-4);
+}
+
+legend {
+  font-weight: var(--font-semibold);
+  padding-inline: var(--space-2);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+ * LABELS
+ * ============================================ */
+
+label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-1-5);
+}
+
+label.required::after {
+  content: " *";
+  color: var(--color-danger-500);
+}
+
+/* Inline labels (for checkboxes/radios) */
+label.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-normal);
+  cursor: pointer;
+}
+
+/* ============================================
+ * TEXT INPUTS
+ * ============================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  display: block;
+  width: 100%;
+  height: var(--height-input-md);
+  padding-inline: var(--space-3);
+  
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  
+  transition: var(--transition-colors), var(--transition-shadow);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover,
+input[type="number"]:hover {
+  border-color: var(--color-border-strong);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="search"]::placeholder {
+  color: var(--color-text-muted);
+}
+
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="password"]:disabled {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Small inputs */
+input.small {
+  height: var(--height-input-sm);
+  font-size: var(--text-xs);
+}
+
+/* ============================================
+ * TEXTAREA
+ * ============================================ */
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-3);
+  
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  
+  resize: vertical;
+  transition: var(--transition-colors), var(--transition-shadow);
+}
+
+textarea:hover {
+  border-color: var(--color-border-strong);
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+ * SELECT DROPDOWN
+ * ============================================ */
+
+select {
+  display: block;
+  width: 100%;
+  height: var(--height-input-md);
+  padding-inline: var(--space-3);
+  padding-inline-end: var(--space-8);
+  
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  
+  background: var(--color-bg-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23868e96' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  
+  cursor: pointer;
+  appearance: none;
+  transition: var(--transition-colors), var(--transition-shadow);
+}
+
+select:hover {
+  border-color: var(--color-border-strong);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+select:disabled {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+select[multiple] {
+  height: auto;
+  min-height: 120px;
+  padding: var(--space-2);
+  background-image: none;
+}
+
+select[multiple] option {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+ * CHECKBOXES
+ * ============================================ */
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary-600);
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+ * RADIO BUTTONS
+ * ============================================ */
+
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--color-primary-600);
+}
+
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+ * FILE INPUT
+ * ============================================ */
+
+input[type="file"] {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+input[type="file"]::file-selector-button {
+  height: var(--height-input-sm);
+  padding-inline: var(--space-3);
+  margin-inline-end: var(--space-3);
+  
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: var(--color-bg-hover);
+}
+
+/* ============================================
+ * FORM FIELD CONTAINER
+ * ============================================ */
+
+.form-field {
+  margin-block-end: var(--space-4);
+}
+
+.form-field__label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+  margin-block-end: var(--space-1-5);
+}
+
+.form-field__hint {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-block-start: var(--space-1);
+}
+
+.form-field__error {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--color-danger-600);
+  margin-block-start: var(--space-1);
+}
+
+/* ============================================
+ * INLINE FORM ELEMENTS
+ * ============================================ */
+
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.form-inline label {
+  margin-block-end: 0;
+}
+
+.form-inline input,
+.form-inline select {
+  width: auto;
+}
+
+/* ============================================
+ * ERROR STATES
+ * ============================================ */
+
+input.error,
+textarea.error,
+select.error,
+input:invalid,
+textarea:invalid,
+select:invalid {
+  border-color: var(--color-danger-500);
+}
+
+input.error:focus,
+textarea.error:focus,
+select.error:focus {
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-danger-500);
+}
+
+/* Error messages */
+.errorExplanation,
+#errorExplanation {
+  background: var(--color-danger-50);
+  border: 1px solid var(--color-danger-500);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-block-end: var(--space-4);
+}
+
+.errorExplanation h2,
+#errorExplanation h2 {
+  color: var(--color-danger-700);
+  font-size: var(--text-base);
+  margin-block: 0 var(--space-2);
+}
+
+.errorExplanation ul,
+#errorExplanation ul {
+  margin: 0;
+  padding-inline-start: var(--space-5);
+}
+
+.errorExplanation li,
+#errorExplanation li {
+  color: var(--color-danger-700);
+}
+
+/* ============================================
+ * REDMINE SPECIFIC FORM LAYOUTS
+ * ============================================ */
+
+/* Attribute box (issue form, etc.) */
+.box {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-block-end: var(--space-4);
+}
+
+/* Tabular form layout */
+.tabular p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-block-end: var(--space-3);
+}
+
+.tabular label {
+  flex: 0 0 200px;
+  text-align: end;
+  padding-block-start: var(--space-2);
+  margin-block-end: 0;
+}
+
+.tabular input,
+.tabular select,
+.tabular textarea {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.tabular .wiki-edit {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+/* Splitcontentleft/right */
+.splitcontentleft {
+  width: 49%;
+  float: left;
+}
+
+.splitcontentright {
+  width: 49%;
+  float: right;
+}
+
+@media (max-width: 900px) {
+  .splitcontentleft,
+  .splitcontentright {
+    width: 100%;
+    float: none;
+  }
+}
