@@ -13,6 +13,9 @@
 @import url('/_buttons.css');
 @import url('/_forms.css');
 @import url('/_issues.css');
+@import url('/_projects.css');
+@import url('/_secondary-views.css');
+@import url('/_polish.css');
 
 @font-face {
   font-family: "Noto Sans";

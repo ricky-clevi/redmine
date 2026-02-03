@@ -15,6 +15,7 @@ services:
       - ./plugins:/usr/src/redmine/plugins
       - ./public/themes:/usr/src/redmine/public/themes
       - ./app/assets/stylesheets:/usr/src/redmine/app/assets/stylesheets
+      - ./app/javascript:/usr/src/redmine/app/javascript
     depends_on:
       - db
 

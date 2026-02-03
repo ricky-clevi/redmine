@@ -82,11 +82,11 @@ Before marking a phase complete:
 | 1 | ✅ Complete | Global Chrome & Layout |
 | 2 | ✅ Complete | Typography & Base Elements |
 | 3 | ✅ Complete | Buttons & Form Controls |
-| 4 | 🔄 In Progress | Issue List & Issue Detail |
-| 5 | Not Started | Project Views & Navigation |
-| 6 | Not Started | Secondary Views |
-| 7 | Not Started | Dark Mode |
-| 8 | Not Started | Polish & Performance |
+| 4 | ✅ Complete | Issue List & Issue Detail |
+| 5 | ✅ Complete | Project Views & Navigation |
+| 6 | ✅ Complete | Secondary Views |
+| 7 | ✅ Complete | Dark Mode |
+| 8 | ✅ Complete | Polish & Performance |
 
 ## Reference Applications
 
