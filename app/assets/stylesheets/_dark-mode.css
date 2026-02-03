@@ -1,0 +1,131 @@
+/**
+ * Redmine Modern UI - Dark Mode Overrides
+ * 
+ * This file contains dark mode color overrides.
+ * Applied when [data-theme="dark"] is set on the <html> element.
+ */
+
+[data-theme="dark"] {
+  /* ============================================
+   * DARK MODE COLOR OVERRIDES
+   * ============================================ */
+
+  /* Semantic Text Colors */
+  --color-text-primary: var(--oc-gray-1);
+  --color-text-secondary: var(--oc-gray-4);
+  --color-text-muted: var(--oc-gray-5);
+  --color-text-disabled: var(--oc-gray-6);
+  --color-text-inverse: var(--oc-gray-9);
+  --color-text-link: var(--oc-blue-4);
+  --color-text-link-hover: var(--oc-blue-3);
+
+  /* Semantic Background Colors */
+  --color-bg-primary: #1a1a1a;
+  --color-bg-secondary: #242424;
+  --color-bg-tertiary: #2e2e2e;
+  --color-bg-elevated: #2e2e2e;
+  --color-bg-hover: #383838;
+  --color-bg-active: #424242;
+  --color-bg-selected: rgba(51, 154, 240, 0.15);
+
+  /* Semantic Border Colors */
+  --color-border-default: var(--oc-gray-7);
+  --color-border-subtle: var(--oc-gray-8);
+  --color-border-strong: var(--oc-gray-6);
+  --color-border-focus: var(--oc-blue-5);
+
+  /* Adjusted Primary Colors for Dark Mode */
+  --color-primary-600: var(--oc-blue-5);
+  --color-primary-700: var(--oc-blue-6);
+
+  /* Success Colors (slightly lighter for dark mode) */
+  --color-success-500: var(--oc-green-5);
+  --color-success-600: var(--oc-green-4);
+
+  /* Warning Colors (slightly lighter for dark mode) */
+  --color-warning-500: var(--oc-yellow-4);
+  --color-warning-600: var(--oc-yellow-5);
+
+  /* Danger Colors (slightly lighter for dark mode) */
+  --color-danger-500: var(--oc-red-5);
+  --color-danger-600: var(--oc-red-4);
+
+  /* Shadow adjustments for dark mode */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.3), 0 1px 2px -1px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+
+  /* Focus Ring Shadow */
+  --shadow-focus-ring: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-border-focus);
+}
+
+/* ============================================
+ * DARK MODE COMPONENT OVERRIDES
+ * ============================================ */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Scrollbar styling for dark mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: var(--oc-gray-6);
+  border-radius: 6px;
+  border: 3px solid var(--color-bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--oc-gray-5);
+}
+
+/* Code blocks in dark mode */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background-color: var(--color-bg-tertiary);
+}
+
+/* Form inputs in dark mode */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Tables in dark mode */
+[data-theme="dark"] table th {
+  background-color: var(--color-bg-tertiary);
+}
+
+[data-theme="dark"] table tr:hover {
+  background-color: var(--color-bg-hover);
+}
+
+/* Images - add subtle background for transparent images */
+[data-theme="dark"] img {
+  background-color: transparent;
+}
+
+/* SVG icons - ensure visibility */
+[data-theme="dark"] .icon svg,
+[data-theme="dark"] [class*="icon-"] svg {
+  fill: currentColor;
+}

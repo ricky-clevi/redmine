@@ -5,6 +5,9 @@
  */
 
 @import url('/open-color.css');
+@import url('/_design-tokens.css');
+@import url('/_modern-reset.css');
+@import url('/_dark-mode.css');
 
 @font-face {
   font-family: "Noto Sans";
