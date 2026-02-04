@@ -2,18 +2,30 @@
  * Redmine - project management software
  * Copyright (C) 2006-  Jean-Philippe Lang
  * This code is released under the GNU General Public License.
+ * 
+ * Complete UI Renewal - Phase 3
  */
 
+/* Foundation */
 @import url('open-color.css');
 @import url('_design-tokens.css');
 @import url('_modern-reset.css');
-@import url('_dark-mode.css');
-@import url('_legacy-base.css');
+
+/* Layout */
 @import url('_modern-layout.css');
 @import url('_modern-typography.css');
+
+/* Components */
 @import url('_buttons.css');
 @import url('_forms.css');
-@import url('_issues.css');
-@import url('_projects.css');
-@import url('_secondary-views.css');
+@import url('_tables.css');
 @import url('_polish.css');
+
+/* Page-specific */
+@import url('_projects.css');
+@import url('_issues.css');
+@import url('_admin.css');
+@import url('_secondary-views.css');
+
+/* Legacy compatibility */
+@import url('_legacy-base.css');

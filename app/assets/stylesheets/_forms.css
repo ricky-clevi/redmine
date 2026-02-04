@@ -1,150 +1,415 @@
 /**
- * Redmine Modern UI - Forms (Phase 2 Radical Redesign)
+ * Redmine Modern UI - Forms
+ * Complete UI Renewal - Phase 3
  * 
- * Clean Inputs, Focus Rings, and Tabular Layouts
+ * Styles for: inputs, selects, textareas, checkboxes, radios,
+ * buttons, labels, and form layouts
  */
 
 /* ============================================
- * INPUTS & CONTROLS
+ * TEXT INPUTS
  * ============================================ */
-
 input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="number"],
-input[type="tel"],
 input[type="url"],
 input[type="search"],
-textarea,
-select {
-  background-color: var(--color-surface-card) !important;
-  border: 1px solid var(--color-border-default) !important;
-  border-radius: var(--radius-md) !important;
-  padding: 8px 12px !important;
-  font-family: inherit !important;
-  font-size: var(--text-sm) !important;
-  line-height: var(--leading-normal) !important;
-  color: var(--color-text-primary) !important;
-  transition: border-color 0.15s, box-shadow 0.15s !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  box-sizing: border-box !important;
+input[type="tel"],
+textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
-/* Adjust width for inline contexts if needed, but default to full width for mobile first */
-p input,
-p select {
-  width: auto !important;
-  min-width: 200px;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none !important;
-  border-color: var(--color-primary-500) !important;
-  box-shadow: 0 0 0 3px var(--color-primary-100) !important;
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--color-text-muted) !important;
-  opacity: 1;
+  color: var(--color-text-muted);
 }
 
-/* Disabled state */
 input:disabled,
-textarea:disabled,
-select:disabled {
-  background-color: var(--color-neutral-100) !important;
-  cursor: not-allowed !important;
-  opacity: 0.7 !important;
+textarea:disabled {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+/* Specific widths for inline inputs */
+p input[type="text"],
+p input[type="number"],
+.tabular input[type="text"],
+.tabular input[type="number"] {
+  width: auto;
+  min-width: 200px;
 }
 
 /* ============================================
- * BUTTONS
+ * SELECT DROPDOWNS
  * ============================================ */
+select {
+  padding: var(--space-2) var(--space-3);
+  padding-right: var(--space-8);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition-normal);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right var(--space-2) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
 
+select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+}
+
+select:disabled {
+  background-color: var(--color-bg-muted);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+select[multiple] {
+  padding-right: var(--space-3);
+  background-image: none;
+  height: auto;
+}
+
+/* ============================================
+ * CHECKBOXES AND RADIOS
+ * ============================================ */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Checkbox/radio with label inline */
+label input[type="checkbox"],
+label input[type="radio"] {
+  margin-right: var(--space-2);
+}
+
+/* ============================================
+ * LABELS
+ * ============================================ */
+label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+/* Inline labels (for checkboxes) */
+label.inline,
+p label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--font-normal);
+  cursor: pointer;
+}
+
+/* Required indicator */
+.required {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* Field description/help text */
+em.info,
+.field-description {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  font-style: normal;
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+ * PRIMARY BUTTONS (Submit)
+ * ============================================ */
 input[type="submit"],
+button[type="submit"],
+.button-positive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.button-positive:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+input[type="submit"]:focus,
+button[type="submit"]:focus,
+.button-positive:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.3);
+}
+
+input[type="submit"]:disabled,
+button[type="submit"]:disabled {
+  background-color: var(--color-text-muted);
+  border-color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+/* ============================================
+ * SECONDARY BUTTONS
+ * ============================================ */
 input[type="button"],
-button,
+button:not([type="submit"]),
 .button {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 8px 16px !important;
-  font-size: var(--text-sm) !important;
-  font-weight: var(--font-medium) !important;
-  line-height: normal !important;
-  text-decoration: none !important;
-  cursor: pointer !important;
-  border-radius: var(--radius-md) !important;
-  transition: all 0.15s ease !important;
-  border: 1px solid transparent !important;
-}
-
-/* Primary Button */
-input[name="commit"],
-input[type="submit"] {
-  background-color: var(--color-primary-600) !important;
-  color: white !important;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-}
-
-input[name="commit"]:hover,
-input[type="submit"]:hover {
-  background-color: var(--color-primary-700) !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Secondary/Generic Button */
-input[type="button"],
-button {
-  background-color: white !important;
-  border-color: var(--color-neutral-300) !important;
-  color: var(--color-neutral-700) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
 }
 
 input[type="button"]:hover,
-button:hover {
-  background-color: var(--color-neutral-50) !important;
-  border-color: var(--color-neutral-400) !important;
+button:not([type="submit"]):hover,
+.button:hover {
+  background-color: var(--color-bg-muted);
+  border-color: var(--color-border-strong);
+}
+
+input[type="button"]:focus,
+button:not([type="submit"]):focus,
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+}
+
+/* Danger button */
+.button-negative,
+button.delete {
+  color: var(--color-danger);
+  border-color: var(--color-danger-border);
+}
+
+.button-negative:hover,
+button.delete:hover {
+  background-color: var(--color-danger-light);
 }
 
 /* ============================================
- * FORM LAYOUTS
+ * TABULAR FORM LAYOUT
+ * Used in Settings, User edit, etc.
  * ============================================ */
+.tabular {
+  max-width: 600px;
+}
 
-/* Tabular forms (Settings, etc) */
 .tabular p {
-  padding-left: 0 !important;
-  margin-bottom: var(--space-4) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+  padding: 0;
 }
 
 .tabular label {
-  float: none !important;
-  width: auto !important;
-  text-align: left !important;
-  margin-left: 0 !important;
-  font-weight: var(--font-medium) !important;
-  margin-bottom: var(--space-2) !important;
-  font-size: var(--text-sm) !important;
-  color: var(--color-text-secondary) !important;
+  width: auto;
+  float: none;
+  text-align: left;
+  margin-bottom: var(--space-1);
+  font-weight: var(--font-medium);
 }
 
-/* Required field indicator */
-.required {
-  color: var(--color-danger-600) !important;
-  margin-left: 2px !important;
+.tabular input[type="text"],
+.tabular input[type="password"],
+.tabular input[type="email"],
+.tabular input[type="number"],
+.tabular textarea,
+.tabular select {
+  width: 100%;
+  max-width: 400px;
 }
 
-/* Form sections */
-.box.tabular {
-  background: var(--color-surface-card) !important;
-  border: none !important;
-  box-shadow: var(--shadow-card) !important;
-  padding: var(--space-6) !important;
+/* ============================================
+ * FIELDSETS
+ * ============================================ */
+fieldset {
+  margin: 0 0 var(--space-4) 0;
+  padding: var(--space-4);
+  background-color: var(--color-bg-muted);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+legend {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-secondary);
+  padding: 0 var(--space-2);
+  margin-left: calc(-1 * var(--space-2));
+}
+
+/* Collapsible fieldsets */
+fieldset.collapsible legend {
+  cursor: pointer;
+}
+
+fieldset.collapsible.collapsed {
+  padding-bottom: 0;
+}
+
+fieldset.collapsible.collapsed>*:not(legend) {
+  display: none;
+}
+
+/* ============================================
+ * CHECK BOX GROUPS
+ * Used for modules selection, permissions, etc.
+ * ============================================ */
+.check_box_group,
+p.check_box_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-bg-muted);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-4);
+}
+
+.check_box_group label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: var(--font-normal);
+  font-size: var(--text-sm);
+  transition: border-color var(--transition-normal), background-color var(--transition-normal);
+  margin: 0;
+}
+
+.check_box_group label:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-bg-hover);
+}
+
+/* ============================================
+ * WIKI TOOLBAR (Text formatting)
+ * ============================================ */
+.jstEditor {
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.jstEditor .jstElements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background-color: var(--color-bg-muted);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.jstEditor .jstElements button {
+  padding: var(--space-1) var(--space-2);
+  min-width: 28px;
+  height: 28px;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--radius-sm);
+}
+
+.jstEditor .jstElements button:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.jstEditor textarea {
+  border: none;
+  border-radius: 0;
+}
+
+.jstEditor textarea:focus {
+  box-shadow: none;
+}
+
+/* ============================================
+ * FORM ACTIONS (Button row)
+ * ============================================ */
+.form-actions,
+p.buttons {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-default);
 }

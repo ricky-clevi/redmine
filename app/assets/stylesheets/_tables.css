@@ -1,0 +1,293 @@
+/**
+ * Redmine Modern UI - Tables
+ * Complete UI Renewal - Phase 3
+ * 
+ * Styles for: table.list, data tables, sort headers
+ */
+
+/* ============================================
+ * BASE TABLE STYLES
+ * ============================================ */
+table.list {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    background-color: var(--color-bg-card);
+}
+
+/* Wrapper for horizontal scrolling on small screens */
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--space-4);
+}
+
+/* ============================================
+ * TABLE HEADERS
+ * ============================================ */
+table.list thead th {
+    background-color: var(--color-bg-muted);
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--color-text-muted);
+    border-bottom: 2px solid var(--color-border-strong);
+    white-space: nowrap;
+}
+
+/* Sortable headers */
+table.list thead th a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+table.list thead th a:hover {
+    color: var(--color-text-secondary);
+}
+
+/* Sort direction indicators */
+table.list thead th.sort.asc a::after,
+table.list thead th.sort.desc a::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: var(--space-1);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+table.list thead th.sort.asc a::after {
+    border-bottom: 4px solid var(--color-text-muted);
+}
+
+table.list thead th.sort.desc a::after {
+    border-top: 4px solid var(--color-text-muted);
+}
+
+/* ============================================
+ * TABLE CELLS
+ * ============================================ */
+table.list tbody td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border-default);
+    vertical-align: middle;
+    color: var(--color-text-primary);
+}
+
+table.list tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Checkbox column */
+table.list td.checkbox,
+table.list th.checkbox {
+    width: 32px;
+    text-align: center;
+    padding-left: var(--space-3);
+    padding-right: var(--space-2);
+}
+
+/* ID column */
+table.list td.id {
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
+ * ROW STATES
+ * ============================================ */
+table.list tbody tr:hover {
+    background-color: var(--color-bg-hover);
+}
+
+/* Selected rows */
+table.list tbody tr.context-menu-selection {
+    background-color: var(--color-accent-light);
+}
+
+/* Odd/even stripes - disabled for cleaner look */
+table.list tbody tr.odd,
+table.list tbody tr.even {
+    background-color: transparent;
+}
+
+/* ============================================
+ * ISSUE TABLE SPECIFICS
+ * ============================================ */
+table.issues {
+    border-left: 3px solid transparent;
+}
+
+/* Priority indicators via left border */
+table.issues tr.issue.priority-low {
+    border-left-color: var(--color-text-muted);
+}
+
+table.issues tr.issue.priority-normal {
+    border-left-color: var(--color-accent);
+}
+
+table.issues tr.issue.priority-high {
+    border-left-color: var(--color-warning);
+}
+
+table.issues tr.issue.priority-urgent,
+table.issues tr.issue.priority-immediate {
+    border-left-color: var(--color-danger);
+}
+
+/* Closed issues */
+table.issues tr.issue.closed {
+    opacity: 0.7;
+}
+
+table.issues tr.issue.closed td.subject a {
+    text-decoration: line-through;
+    color: var(--color-text-muted);
+}
+
+/* Subject column - primary action */
+table.issues td.subject {
+    font-weight: var(--font-medium);
+}
+
+table.issues td.subject a {
+    color: var(--color-text-primary);
+}
+
+table.issues td.subject a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+/* Status badges */
+table.issues td.status span {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+    border-radius: var(--radius-full);
+    background-color: var(--color-bg-muted);
+    color: var(--color-text-secondary);
+}
+
+/* ============================================
+ * USER TABLE
+ * ============================================ */
+table.users td.email a {
+    color: var(--color-text-secondary);
+}
+
+table.users td.status span.active {
+    color: var(--color-success);
+}
+
+table.users td.status span.locked {
+    color: var(--color-danger);
+}
+
+/* ============================================
+ * TIME ENTRIES TABLE
+ * ============================================ */
+table.time-entries td.hours {
+    font-weight: var(--font-semibold);
+    text-align: right;
+}
+
+table.time-entries td.hours .hours-dec {
+    color: var(--color-text-muted);
+}
+
+/* ============================================
+ * VERSIONS TABLE
+ * ============================================ */
+table.versions td.name {
+    font-weight: var(--font-medium);
+}
+
+table.versions td.date {
+    white-space: nowrap;
+}
+
+/* ============================================
+ * SIMPLE TABLES (Non-list)
+ * ============================================ */
+table:not(.list) {
+    border-collapse: collapse;
+}
+
+table:not(.list) th,
+table:not(.list) td {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border-default);
+}
+
+table:not(.list) th {
+    background-color: var(--color-bg-muted);
+    font-weight: var(--font-medium);
+    text-align: left;
+}
+
+/* ============================================
+ * WORKFLOW TRANSITION TABLE
+ * ============================================ */
+table.transitions {
+    font-size: var(--text-xs);
+}
+
+table.transitions th,
+table.transitions td {
+    padding: var(--space-2);
+    text-align: center;
+    border: 1px solid var(--color-border-default);
+}
+
+table.transitions th {
+    background-color: var(--color-bg-muted);
+    font-weight: var(--font-medium);
+}
+
+table.transitions td.current_status {
+    font-weight: var(--font-semibold);
+    text-align: left;
+    background-color: var(--color-bg-muted);
+    white-space: nowrap;
+}
+
+table.transitions td input[type="checkbox"] {
+    margin: 0;
+}
+
+/* ============================================
+ * TOTALS ROW
+ * ============================================ */
+table.list tfoot td {
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-bg-muted);
+    font-weight: var(--font-semibold);
+    border-top: 2px solid var(--color-border-strong);
+}
+
+/* ============================================
+ * QUERY RESULTS INFO
+ * ============================================ */
+.query-totals {
+    margin-bottom: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.query-totals span {
+    margin-right: var(--space-4);
+}
+
+.query-totals .value {
+    font-weight: var(--font-semibold);
+    color: var(--color-text-primary);
+}
