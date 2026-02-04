@@ -31,10 +31,21 @@
   max-width: 300px;
 }
 
-.toc a.heading1 { font-weight: var(--font-semibold); }
-.toc a.heading2 { padding-inline-start: var(--space-3); }
-.toc a.heading3 { padding-inline-start: var(--space-6); }
-.toc a.heading4 { padding-inline-start: var(--space-9); }
+.toc a.heading1 {
+  font-weight: var(--font-semibold);
+}
+
+.toc a.heading2 {
+  padding-inline-start: var(--space-3);
+}
+
+.toc a.heading3 {
+  padding-inline-start: var(--space-6);
+}
+
+.toc a.heading4 {
+  padding-inline-start: var(--space-9);
+}
 
 .toc ul {
   margin: 0;
@@ -591,55 +602,463 @@ table.report td a {
  * ============================================ */
 
 #admin-index {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-4);
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: var(--space-4) !important;
 }
 
 #admin-index .box {
-  margin: 0;
+  margin: 0 !important;
+  background: var(--color-neutral-0) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: 24px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: box-shadow 0.15s, border-color 0.15s !important;
+}
+
+#admin-index .box:hover {
+  border-color: var(--color-border-default) !important;
+  box-shadow: var(--shadow-md) !important;
 }
 
 #admin-index h3 {
-  font-size: var(--text-base);
-  margin-block-end: var(--space-3);
+  font-size: var(--text-sm) !important;
+  font-weight: var(--font-semibold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--tracking-wider) !important;
+  color: var(--color-text-muted) !important;
+  margin-block-end: var(--space-4) !important;
+  padding-block-end: var(--space-3) !important;
+  border-block-end: 1px solid var(--color-border-subtle) !important;
 }
 
 #admin-index ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
 #admin-index ul li {
-  padding-block: var(--space-1);
+  padding-block: var(--space-2) !important;
+}
+
+#admin-index ul li a {
+  color: var(--color-text-secondary) !important;
+  text-decoration: none !important;
+  font-size: var(--text-sm) !important;
+  display: block !important;
+  padding: var(--space-2) var(--space-3) !important;
+  margin-inline: calc(var(--space-3) * -1) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: background 0.15s, color 0.15s !important;
+}
+
+#admin-index ul li a:hover {
+  background: var(--color-bg-hover) !important;
+  color: var(--color-text-primary) !important;
 }
 
 #admin-menu {
-  margin-block-end: var(--space-4);
+  margin-block-end: var(--space-4) !important;
+  background: var(--color-neutral-0) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-2xl) !important;
+  padding: var(--space-4) !important;
 }
 
 #admin-menu ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
 #admin-menu li {
-  margin: 0;
-  padding-block: var(--space-1);
+  margin: 0 !important;
 }
 
 #admin-menu a {
-  color: var(--color-text-secondary);
-  font-size: var(--text-sm);
+  color: var(--color-text-secondary) !important;
+  font-size: var(--text-sm) !important;
+  text-decoration: none !important;
+  display: block !important;
+  padding: var(--space-2) var(--space-3) !important;
+  border-radius: var(--radius-lg) !important;
+  transition: background 0.15s, color 0.15s !important;
 }
 
 #admin-menu a:hover {
-  color: var(--color-text-primary);
+  background: var(--color-bg-hover) !important;
+  color: var(--color-text-primary) !important;
 }
 
 #admin-menu a.selected {
-  color: var(--color-primary-600);
-  font-weight: var(--font-medium);
+  color: var(--color-primary-600) !important;
+  background: var(--color-bg-selected) !important;
+  font-weight: var(--font-medium) !important;
+}
+
+/* Warning flash for admin */
+.warning,
+.flash.warning,
+#flash_warning {
+  background: linear-gradient(to right, var(--color-warning-500) 4px, var(--color-warning-50) 4px) !important;
+  border: none !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 16px 20px 16px 20px !important;
+  color: var(--color-warning-800) !important;
+  margin-block-end: 24px !important;
+}
+
+/* ============================================
+ * MY PAGE WIDGETS
+ * ============================================ */
+#my-page,
+#list-top,
+#list-left,
+#list-right {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  gap: var(--space-4) !important;
+}
+
+#list-top,
+#list-left,
+#list-right {
+  display: block !important;
+}
+
+.mypage-box {
+  background: var(--color-neutral-0) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-sm) !important;
+  overflow: hidden !important;
+  margin-block-end: var(--space-4) !important;
+}
+
+.mypage-box .handle {
+  background: var(--color-bg-secondary) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  font-weight: var(--font-semibold) !important;
+  font-size: var(--text-sm) !important;
+  border-block-end: 1px solid var(--color-border-subtle) !important;
+  cursor: move !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.mypage-box .handle a {
+  color: var(--color-text-muted) !important;
+  font-size: var(--text-xs) !important;
+}
+
+.mypage-box>table,
+.mypage-box>div:not(.handle) {
+  padding: var(--space-4) !important;
+}
+
+/* ============================================
+ * ENHANCED CALENDAR
+ * ============================================ */
+table.cal {
+  border-collapse: separate !important;
+  border-spacing: 2px !important;
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+table.cal thead th {
+  background: var(--color-primary-600) !important;
+  color: var(--color-neutral-0) !important;
+  font-weight: var(--font-semibold) !important;
+  padding: var(--space-3) !important;
+  text-align: center !important;
+}
+
+table.cal td {
+  background: var(--color-neutral-0) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  vertical-align: top !important;
+  min-height: 100px !important;
+  padding: var(--space-2) !important;
+  font-size: var(--text-sm) !important;
+}
+
+table.cal td.today {
+  background: var(--color-primary-50) !important;
+  border-color: var(--color-primary-300) !important;
+}
+
+table.cal td.odd {
+  background: var(--color-bg-secondary) !important;
+}
+
+table.cal td p.day-num {
+  font-weight: var(--font-semibold) !important;
+  font-size: var(--text-base) !important;
+  margin-block-end: var(--space-2) !important;
+}
+
+table.cal td.today p.day-num {
+  color: var(--color-primary-600) !important;
+}
+
+/* Calendar events */
+table.cal .starting,
+table.cal .ending {
+  font-size: var(--text-xs) !important;
+  padding: var(--space-1) !important;
+  border-radius: var(--radius-sm) !important;
+  margin-block-end: var(--space-1) !important;
+  display: block !important;
+}
+
+table.cal .starting {
+  background: var(--color-success-100) !important;
+  color: var(--color-success-700) !important;
+}
+
+table.cal .ending {
+  background: var(--color-danger-100) !important;
+  color: var(--color-danger-700) !important;
+}
+
+/* ============================================
+ * GANTT ENHANCEMENTS
+ * ============================================ */
+.gantt_hdr {
+  background: var(--color-bg-secondary) !important;
+  font-size: var(--text-xs) !important;
+  font-weight: var(--font-medium) !important;
+  border-block-end: 1px solid var(--color-border-subtle) !important;
+}
+
+.gantt_subjects {
+  background: var(--color-neutral-0) !important;
+}
+
+.gantt_subjects a {
+  font-size: var(--text-sm) !important;
+}
+
+/* ============================================
+ * SEARCH RESULTS
+ * ============================================ */
+dl#search-results {
+  margin: 0 !important;
+}
+
+dl#search-results dt {
+  font-size: var(--text-base) !important;
+  font-weight: var(--font-medium) !important;
+  margin-block-start: var(--space-4) !important;
+  padding-block-end: var(--space-2) !important;
+  border-block-end: 1px solid var(--color-border-subtle) !important;
+}
+
+dl#search-results dt:first-child {
+  margin-block-start: 0 !important;
+}
+
+dl#search-results dd {
+  font-size: var(--text-sm) !important;
+  padding: var(--space-3) !important;
+  background: var(--color-bg-secondary) !important;
+  border-radius: var(--radius-lg) !important;
+  margin: var(--space-2) 0 !important;
+  color: var(--color-text-secondary) !important;
+}
+
+dl#search-results dd span.description {
+  display: block !important;
+  margin-block-start: var(--space-2) !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* ============================================
+ * ENHANCED ACTIVITY TIMELINE
+ * ============================================ */
+dl#activity {
+  border-inline-start: 2px solid var(--color-border-subtle) !important;
+  margin-inline-start: var(--space-4) !important;
+  padding-inline-start: var(--space-4) !important;
+}
+
+dl#activity dt {
+  font-weight: var(--font-semibold) !important;
+  color: var(--color-text-primary) !important;
+  margin-block-start: var(--space-6) !important;
+  position: relative !important;
+}
+
+dl#activity dt:first-child {
+  margin-block-start: 0 !important;
+}
+
+dl#activity dt::before {
+  content: "" !important;
+  position: absolute !important;
+  inset-inline-start: calc(-1 * var(--space-4) - 6px) !important;
+  inset-block-start: 50% !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: var(--color-primary-600) !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--color-neutral-0) !important;
+  transform: translateY(-50%) !important;
+}
+
+dl#activity dd {
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-secondary) !important;
+  margin: 0 !important;
+  padding: var(--space-2) 0 !important;
+}
+
+/* ============================================
+ * PLUGIN LIST
+ * ============================================ */
+table.plugins {
+  border-collapse: separate !important;
+  border-spacing: 0 var(--space-3) !important;
+  width: 100% !important;
+}
+
+table.plugins td {
+  background: var(--color-neutral-0) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  padding: var(--space-4) !important;
+  vertical-align: top !important;
+}
+
+table.plugins td:first-child {
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg) !important;
+  border-inline-end: none !important;
+}
+
+table.plugins td:last-child {
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0 !important;
+  border-inline-start: none !important;
+}
+
+table.plugins span.name {
+  font-weight: var(--font-semibold) !important;
+  font-size: var(--text-base) !important;
+  display: block !important;
+  margin-block-end: var(--space-1) !important;
+}
+
+table.plugins span.description {
+  color: var(--color-text-secondary) !important;
+  font-size: var(--text-sm) !important;
+}
+
+/* ============================================
+ * PERMISSIONS MATRIX
+ * ============================================ */
+table.permissions {
+  font-size: var(--text-sm) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+}
+
+table.permissions th {
+  background: var(--color-bg-secondary) !important;
+  padding: var(--space-3) !important;
+  font-weight: var(--font-medium) !important;
+  font-size: var(--text-xs) !important;
+  text-transform: uppercase !important;
+}
+
+table.permissions td {
+  padding: var(--space-2) !important;
+  text-align: center !important;
+  border-block-end: 1px solid var(--color-border-subtle) !important;
+}
+
+table.permissions td.name {
+  text-align: start !important;
+  font-weight: var(--font-medium) !important;
+  padding-inline-start: var(--space-4) !important;
+}
+
+table.permissions tr:hover {
+  background: var(--color-bg-hover) !important;
+}
+
+/* ============================================
+ * WORKFLOW MATRIX
+ * ============================================ */
+table.workflows {
+  border-collapse: separate !important;
+  border-spacing: 1px !important;
+  font-size: var(--text-sm) !important;
+}
+
+table.workflows td {
+  background: var(--color-neutral-0) !important;
+  padding: var(--space-2) !important;
+  text-align: center !important;
+}
+
+table.workflows th {
+  background: var(--color-bg-secondary) !important;
+  padding: var(--space-2) var(--space-3) !important;
+  font-weight: var(--font-medium) !important;
+  font-size: var(--text-xs) !important;
+}
+
+/* ============================================
+ * SETTINGS TABS CONTENT
+ * ============================================ */
+#tab-content-area,
+div[id^="tab-content-"] {
+  background: var(--color-neutral-0) !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--space-6) !important;
+  margin-block-start: -1px !important;
+}
+
+/* ============================================
+ * USER PROFILE PAGE
+ * ============================================ */
+.controller-users.action-show .splitcontent {
+  display: grid !important;
+  grid-template-columns: 200px 1fr !important;
+  gap: var(--space-6) !important;
+}
+
+.controller-users.action-show .splitcontentleft {
+  text-align: center !important;
+}
+
+.controller-users.action-show .avatar {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: var(--radius-full) !important;
+  margin-block-end: var(--space-4) !important;
+}
+
+/* ============================================
+ * MY ACCOUNT PAGE
+ * ============================================ */
+.controller-my.action-account .splitcontent {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: var(--space-6) !important;
+}
+
+@media (max-width: 900px) {
+  .controller-my.action-account .splitcontent {
+    grid-template-columns: 1fr !important;
+  }
+
+  .controller-users.action-show .splitcontent {
+    grid-template-columns: 1fr !important;
+  }
 }

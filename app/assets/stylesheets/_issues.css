@@ -57,8 +57,8 @@
 /* Feedback - Orange */
 .status-badge--feedback,
 .status-badge[data-status="feedback"] {
-  background: #fff4e6;
-  color: #e67700;
+  background: var(--oc-orange-0);
+  color: var(--oc-orange-7);
 }
 
 /* Rejected - Red */
@@ -94,12 +94,12 @@
 }
 
 .priority-badge--high {
-  background: #fff9db;
-  color: #f59f00;
+  background: var(--oc-yellow-0);
+  color: var(--oc-yellow-7);
 }
 
 .priority-badge--urgent {
-  background: #ffe3e3;
+  background: var(--oc-red-1);
   color: var(--color-danger-600);
 }
 
@@ -112,45 +112,47 @@
  * ISSUE LIST TABLE
  * ============================================ */
 
-table.list.issues {
-  width: 100%;
-  border-collapse: collapse;
+table.list {
+  border: none !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  width: 100% !important;
 }
 
-table.list.issues th {
-  background: var(--color-bg-secondary);
-  font-weight: var(--font-medium);
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-text-muted);
-  padding: var(--space-2) var(--space-3);
-  text-align: start;
-  border-block-end: 2px solid var(--color-border-default);
+table.list th {
+  background: transparent !important;
+  border-bottom: 2px solid var(--color-border-subtle) !important;
+  font-size: var(--text-xs) !important;
+  font-weight: var(--font-semibold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--tracking-wider) !important;
+  color: var(--color-text-muted) !important;
+  padding: 12px 16px !important;
+  text-align: start !important;
 }
 
-table.list.issues td {
-  padding: var(--space-3);
-  border-block-end: 1px solid var(--color-border-subtle);
-  font-size: var(--text-sm);
-  vertical-align: middle;
+table.list td {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--color-border-subtle) !important;
+  font-size: var(--text-sm) !important;
+  vertical-align: middle !important;
+  background: transparent !important;
 }
 
-table.list.issues tr:hover {
-  background: var(--color-bg-hover);
+table.list tr:hover {
+  background: var(--color-bg-hover) !important;
 }
 
-table.list.issues tr.odd {
-  background: transparent;
+/* Override legacy alternating colors */
+table.list tr.odd,
+table.list tr.even,
+table.list tr.odd:nth-child(odd),
+table.list tr.even:nth-child(even) {
+  background: transparent !important;
 }
 
-table.list.issues tr.even {
-  background: transparent;
-}
-
-table.list.issues tr.odd:hover,
-table.list.issues tr.even:hover {
-  background: var(--color-bg-hover);
+table.list tr:hover td {
+  background: transparent !important;
 }
 
 /* Issue ID column */
@@ -183,11 +185,27 @@ table.list.issues td.status {
 }
 
 /* Priority column - color indicators */
-table.list.issues tr.priority-lowest td.priority { color: var(--color-neutral-500); }
-table.list.issues tr.priority-low td.priority { color: var(--color-neutral-600); }
-table.list.issues tr.priority-default td.priority { color: var(--color-text-primary); }
-table.list.issues tr.priority-high td.priority { color: var(--color-warning-600); font-weight: var(--font-medium); }
-table.list.issues tr.priority-highest td.priority { color: var(--color-danger-600); font-weight: var(--font-semibold); }
+table.list.issues tr.priority-lowest td.priority {
+  color: var(--color-neutral-500);
+}
+
+table.list.issues tr.priority-low td.priority {
+  color: var(--color-neutral-600);
+}
+
+table.list.issues tr.priority-default td.priority {
+  color: var(--color-text-primary);
+}
+
+table.list.issues tr.priority-high td.priority {
+  color: var(--color-warning-600);
+  font-weight: var(--font-medium);
+}
+
+table.list.issues tr.priority-highest td.priority {
+  color: var(--color-danger-600);
+  font-weight: var(--font-semibold);
+}
 
 /* Done ratio progress bar */
 table.list.issues td.done_ratio {
@@ -269,7 +287,7 @@ table.list.issues td.done_ratio {
   background: var(--color-primary-200);
   border-radius: var(--radius-full);
   color: var(--color-primary-700);
-  font-size: 10px;
+  font-size: var(--text-xs);
   cursor: pointer;
 }
 
@@ -306,9 +324,10 @@ table.list.issues td.done_ratio {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: var(--space-4);
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
   margin-block-end: var(--space-4);
 }
 

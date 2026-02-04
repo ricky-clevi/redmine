@@ -64,97 +64,42 @@ input[type="url"],
 input[type="number"],
 input[type="date"],
 input[type="time"],
-input[type="datetime-local"] {
-  display: block;
-  width: 100%;
-  height: var(--height-input-md);
-  padding-inline: var(--space-3);
-  
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  color: var(--color-text-primary);
-  
-  background: var(--color-bg-primary);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-  
-  transition: var(--transition-colors), var(--transition-shadow);
+input[type="datetime-local"],
+textarea,
+select {
+  display: block !important;
+  width: 100% !important;
+  height: 40px !important;
+  padding: 8px 12px !important;
+
+  font-family: var(--font-sans) !important;
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-primary) !important;
+
+  background: var(--color-bg-primary) !important;
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: var(--radius-lg) !important;
+
+  transition: border-color 0.15s, box-shadow 0.15s !important;
 }
 
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="password"]:hover,
-input[type="search"]:hover,
-input[type="tel"]:hover,
-input[type="url"]:hover,
-input[type="number"]:hover {
-  border-color: var(--color-border-strong);
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--color-border-strong) !important;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
-input[type="number"]:focus {
-  outline: none;
-  border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-focus-ring);
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--color-border-focus) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
 }
-
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="password"]::placeholder,
-input[type="search"]::placeholder {
-  color: var(--color-text-muted);
-}
-
-input[type="text"]:disabled,
-input[type="email"]:disabled,
-input[type="password"]:disabled {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
-}
-
-/* Small inputs */
-input.small {
-  height: var(--height-input-sm);
-  font-size: var(--text-xs);
-}
-
-/* ============================================
- * TEXTAREA
- * ============================================ */
 
 textarea {
-  display: block;
-  width: 100%;
-  min-height: 120px;
-  padding: var(--space-3);
-  
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  color: var(--color-text-primary);
-  
-  background: var(--color-bg-primary);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-  
-  resize: vertical;
-  transition: var(--transition-colors), var(--transition-shadow);
-}
-
-textarea:hover {
-  border-color: var(--color-border-strong);
-}
-
-textarea:focus {
-  outline: none;
-  border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-focus-ring);
+  height: auto !important;
+  min-height: 120px !important;
 }
 
 textarea::placeholder {
@@ -171,19 +116,19 @@ select {
   height: var(--height-input-md);
   padding-inline: var(--space-3);
   padding-inline-end: var(--space-8);
-  
+
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   color: var(--color-text-primary);
-  
+
   background: var(--color-bg-primary);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23868e96' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right var(--space-3) center;
-  
+
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-lg);
-  
+
   cursor: pointer;
   appearance: none;
   transition: var(--transition-colors), var(--transition-shadow);
@@ -264,12 +209,12 @@ input[type="file"]::file-selector-button {
   height: var(--height-input-sm);
   padding-inline: var(--space-3);
   margin-inline-end: var(--space-3);
-  
+
   font-family: var(--font-sans);
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   color: var(--color-text-primary);
-  
+
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-md);
@@ -351,30 +296,35 @@ select.error:focus {
 
 /* Error messages */
 .errorExplanation,
+#errorExplanation,
+.flash {
+  border: 1px solid transparent !important;
+  border-radius: var(--radius-xl) !important;
+  padding: 16px 20px !important;
+  margin-block-end: 24px !important;
+}
+
+#flash_notice,
+.flash.notice {
+  background: var(--color-success-50) !important;
+  border-color: var(--color-success-500) !important;
+  color: var(--color-success-700) !important;
+}
+
+#flash_warning,
+.flash.warning {
+  background: var(--color-warning-50) !important;
+  border-color: var(--color-warning-500) !important;
+  color: var(--color-warning-700) !important;
+}
+
+#flash_error,
+.flash.error,
+.errorExplanation,
 #errorExplanation {
-  background: var(--color-danger-50);
-  border: 1px solid var(--color-danger-500);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin-block-end: var(--space-4);
-}
-
-.errorExplanation h2,
-#errorExplanation h2 {
-  color: var(--color-danger-700);
-  font-size: var(--text-base);
-  margin-block: 0 var(--space-2);
-}
-
-.errorExplanation ul,
-#errorExplanation ul {
-  margin: 0;
-  padding-inline-start: var(--space-5);
-}
-
-.errorExplanation li,
-#errorExplanation li {
-  color: var(--color-danger-700);
+  background: var(--color-danger-50) !important;
+  border-color: var(--color-danger-500) !important;
+  color: var(--color-danger-700) !important;
 }
 
 /* ============================================
@@ -430,6 +380,7 @@ select.error:focus {
 }
 
 @media (max-width: 900px) {
+
   .splitcontentleft,
   .splitcontentright {
     width: 100%;

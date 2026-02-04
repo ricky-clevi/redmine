@@ -9,9 +9,14 @@
  * WRAPPER
  * ============================================ */
 
+body {
+  background: var(--color-neutral-50) !important;
+  min-width: auto !important;
+}
+
 #wrapper {
   min-block-size: 100vh;
-  background: var(--color-bg-primary);
+  background: transparent !important;
 }
 
 /* ============================================
@@ -19,12 +24,12 @@
  * ============================================ */
 
 #top-menu {
-  background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
+  background: var(--color-neutral-0) !important;
+  color: var(--color-text-secondary) !important;
   font-size: var(--text-xs);
   padding-block: var(--space-2);
   padding-inline: var(--space-4);
-  border-block-end: 1px solid var(--color-border-subtle);
+  border-block-end: 1px solid var(--color-border-subtle) !important;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -46,7 +51,7 @@
 }
 
 #top-menu a {
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary) !important;
   font-weight: var(--font-medium);
   text-decoration: none;
   padding: var(--space-1) var(--space-2);
@@ -55,7 +60,7 @@
 }
 
 #top-menu a:hover {
-  color: var(--color-text-primary);
+  color: var(--color-text-primary) !important;
   background: var(--color-bg-hover);
 }
 
@@ -66,7 +71,7 @@
 }
 
 #top-menu #loggedas a {
-  color: var(--color-text-primary);
+  color: var(--color-text-primary) !important;
   font-weight: var(--font-medium);
 }
 
@@ -80,16 +85,19 @@
  * ============================================ */
 
 #header {
-  background: var(--color-primary-700);
+  background: #1e293b !important;
+  /* Dark slate */
+  background-image: none !important;
   color: var(--color-neutral-0);
-  padding-block: var(--space-3) var(--space-10);
-  padding-inline: var(--space-5);
+  padding-block: var(--space-4) var(--space-12) !important;
+  padding-inline: var(--space-6) !important;
   position: relative;
-  min-block-size: auto;
+  min-block-size: auto !important;
+  box-shadow: var(--shadow-sm) !important;
 }
 
 #header a {
-  color: var(--color-neutral-0);
+  color: var(--color-neutral-0) !important;
   text-decoration: none;
 }
 
@@ -98,8 +106,8 @@
 }
 
 #header h1 {
-  font-size: var(--text-xl);
-  font-weight: var(--font-semibold);
+  font-size: var(--text-lg) !important;
+  font-weight: var(--font-semibold) !important;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -119,8 +127,8 @@
 /* Quick Search */
 #quick-search {
   position: absolute;
-  inset-block-start: var(--space-3);
-  inset-inline-end: var(--space-5);
+  inset-block-start: var(--space-4) !important;
+  inset-inline-end: var(--space-6) !important;
 }
 
 #quick-search form {
@@ -146,8 +154,8 @@
   inline-size: 200px;
   block-size: var(--height-input-sm);
   padding-inline: var(--space-3);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(var(--oc-white-rgb), 0.1) !important;
+  border: 1px solid rgba(var(--oc-white-rgb), 0.2) !important;
   border-radius: var(--radius-lg);
   color: var(--color-neutral-0);
   font-size: var(--text-sm);
@@ -155,14 +163,14 @@
 }
 
 #quick-search #q::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(var(--oc-white-rgb), 0.5);
 }
 
 #quick-search #q:focus {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(var(--oc-white-rgb), 0.15) !important;
+  border-color: rgba(var(--oc-white-rgb), 0.4) !important;
   outline: none;
-  inline-size: 280px;
+  inline-size: 240px;
 }
 
 #quick-search #project-jump {
@@ -175,9 +183,9 @@
 
 #main-menu {
   position: absolute;
-  inset-block-end: 0;
-  inset-inline-start: var(--space-5);
-  inset-inline-end: var(--space-5);
+  inset-block-end: 1rem !important;
+  inset-inline-start: var(--space-6) !important;
+  inset-inline-end: var(--space-6) !important;
 }
 
 #main-menu ul {
@@ -198,40 +206,39 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(var(--oc-white-rgb), 0.7) !important;
   text-decoration: none;
   font-size: var(--text-sm);
   font-weight: var(--font-medium);
   padding-block: var(--space-2);
   padding-inline: var(--space-3);
-  border-radius: 0;
-  border-block-end: 2px solid transparent;
+  border-radius: var(--radius-md) !important;
+  border-block-end: none !important;
   transition: var(--transition-colors);
   margin-block-end: -1px;
 }
 
 #main-menu li a:hover {
-  color: var(--color-neutral-0);
-  background: transparent;
-  border-block-end-color: rgba(255, 255, 255, 0.5);
+  color: var(--color-neutral-0) !important;
+  background: rgba(var(--oc-white-rgb), 0.1) !important;
 }
 
 #main-menu li a.selected,
 #main-menu li a.selected:hover {
-  color: var(--color-neutral-0);
-  background: transparent;
+  color: var(--color-neutral-0) !important;
+  background: rgba(var(--oc-white-rgb), 0.15) !important;
   font-weight: var(--font-semibold);
   border-block-end-color: var(--color-neutral-0);
 }
 
 #main-menu li a.new-object {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(var(--oc-white-rgb), 0.2);
   border-radius: var(--radius-md);
   border-block-end-color: transparent;
 }
 
 #main-menu li a.new-object:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(var(--oc-white-rgb), 0.3);
 }
 
 /* Menu Children (Dropdowns) */
@@ -274,13 +281,13 @@
 }
 
 #main-menu .tabs-buttons button {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(var(--oc-white-rgb), 0.2);
   border-radius: var(--radius-md);
   padding: var(--space-1);
 }
 
 #main-menu .tabs-buttons button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(var(--oc-white-rgb), 0.3);
 }
 
 /* ============================================
@@ -290,15 +297,22 @@
 #main {
   flex-grow: 1;
   display: flex;
-  flex-direction: row-reverse;
-  background: var(--color-bg-primary);
+  flex-direction: row !important;
+  /* Sidebar on LEFT */
+  background: transparent !important;
+  padding: var(--space-4) !important;
+  gap: var(--space-4) !important;
 }
 
 #content {
   flex-grow: 1;
-  padding: var(--space-6);
+  padding: var(--space-6) !important;
   max-inline-size: var(--width-content-max);
-  margin-inline: auto;
+  margin-inline: 0 !important;
+  background: var(--color-neutral-0) !important;
+  border-radius: var(--radius-2xl) !important;
+  box-shadow: var(--shadow-sm) !important;
+  border: 1px solid var(--color-border-subtle) !important;
 }
 
 /* ============================================
@@ -308,9 +322,19 @@
 #sidebar {
   font-size: var(--text-sm);
   flex-shrink: 0;
-  padding: var(--space-5);
-  background: var(--color-bg-secondary);
-  border-inline-start: 1px solid var(--color-border-subtle);
+  padding: var(--space-4) !important;
+  background: var(--color-neutral-0) !important;
+  border-inline-start: none !important;
+  border: 1px solid var(--color-border-subtle) !important;
+  border-radius: var(--radius-2xl) !important;
+  width: var(--width-sidebar) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+#sidebar a.selected {
+  color: var(--color-primary-600) !important;
+  background: var(--color-bg-selected) !important;
+  font-weight: var(--font-medium);
 }
 
 #sidebar h3 {
@@ -464,13 +488,13 @@
 
 .mobile-toggle-button {
   display: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(var(--oc-white-rgb), 0.2);
   border-radius: var(--radius-md);
   padding: var(--space-2);
 }
 
 .mobile-toggle-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(var(--oc-white-rgb), 0.3);
 }
 
 /* ============================================

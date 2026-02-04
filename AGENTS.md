@@ -6,28 +6,27 @@ This project aims to transform Redmine's dated UI into a modern, sleek project m
 
 ## Repository Structure
 
-```
+`
 redmine/
-├── app/
-│   ├── assets/
-│   │   ├── stylesheets/     # CSS files - PRIMARY MODIFICATION TARGET
-│   │   ├── javascripts/     # JS files - SECONDARY TARGET
-│   │   └── images/          # Static images
-│   ├── views/               # ERB templates - MAJOR MODIFICATION TARGET
-│   │   ├── layouts/         # Main layout templates
-│   │   ├── issues/          # Issue views
-│   │   ├── projects/        # Project views
-│   │   └── ...
-│   └── helpers/             # View helpers
-├── public/
-│   └── themes/              # Custom themes (mounted in Docker)
-├── docs/                    # Our documentation
-│   ├── specs/               # Feature specifications
-│   ├── design/              # Design system docs
-│   └── phases/              # Phase-specific docs
-└── themes/                  # Theme directory
-```
-
+- app/
+  - assets/
+    - stylesheets/   # CSS files - PRIMARY MODIFICATION TARGET
+    - images/        # Static images
+  - javascript/      # JS files - SECONDARY TARGET
+  - views/           # ERB templates - MAJOR MODIFICATION TARGET
+    - layouts/
+    - issues/
+    - projects/
+    - ...
+  - helpers/         # View helpers
+- public/
+  - themes/          # Custom themes (mounted in Docker)
+- docs/              # Our documentation
+  - specs/           # Feature specifications
+  - design/          # Design system docs
+  - phases/          # Phase-specific docs
+- themes/            # Theme directory
+`
 ## Technology Stack
 
 - **Backend**: Ruby on Rails (DO NOT MODIFY unless necessary for UI)
@@ -55,7 +54,7 @@ docker compose logs -f      # View logs
 1. Use CSS custom properties (variables) for all colors, spacing, typography
 2. Follow BEM naming convention for new classes: `.block__element--modifier`
 3. Maintain the existing Open Color palette (`open-color.css`) but extend with new variables
-4. All new styles go in dedicated files, imported into `application.css`
+4. All new styles go in dedicated files; `application.css` is a manifest only
 5. Use `rem` units for sizing, never `px` for font sizes
 6. Mobile-first responsive design using `min-width` media queries
 
@@ -158,3 +157,4 @@ Each phase must include:
 3. Screenshots of before/after
 4. List of modified files
 5. Any new CSS classes added
+

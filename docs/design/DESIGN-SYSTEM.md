@@ -214,6 +214,15 @@ This document defines the design system for the modernized Redmine UI. All compo
 - `.btn--md`: Medium (height: 36px, default)
 - `.btn--lg`: Large (height: 44px)
 
+### Theme Toggle
+
+```html
+<button type="button" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+  <span data-theme-icon="light" aria-hidden="true">Light</span>
+  <span data-theme-icon="dark" aria-hidden="true">Dark</span>
+</button>
+```
+
 ### Form Inputs
 
 ```html
@@ -267,22 +276,11 @@ This document defines the design system for the modernized Redmine UI. All compo
 
 ### Main Application Layout
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        Top Bar                               │
-├──────────┬─────────────────────────────────────────────────┤
-│          │                                                   │
-│  Side    │                 Main Content                      │
-│  bar     │                                                   │
-│          │                                                   │
-│  240px   │                     Flex                          │
-│          │                                                   │
-│          ├─────────────────────────────────┬─────────────────┤
-│          │       Content Area              │  Details Pane   │
-│          │                                 │    (optional)   │
-│          │                                 │                 │
-└──────────┴─────────────────────────────────┴─────────────────┘
-```
+Layout zones:
+- Top bar spans full width
+- Sidebar on the left (fixed width)
+- Main content in the center (fluid)
+- Optional details pane on the right (fixed width)
 
 ### Sidebar Navigation
 
@@ -312,7 +310,7 @@ This document defines the design system for the modernized Redmine UI. All compo
 | `c` | Create new issue |
 | `p` | Go to projects |
 | `i` | Go to issues |
-| `/` or `⌘+k` | Open command palette |
+| `/` or `Cmd+K` | Open command palette |
 | `?` | Show keyboard shortcuts |
 | `esc` | Close modal/panel |
 

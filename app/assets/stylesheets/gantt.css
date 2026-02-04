@@ -34,20 +34,22 @@ table.gantt-table td {
   position: absolute;
   inset-block-start: 0;
   block-size: 16px;
-  border-block: 1px solid var(--oc-gray-4);
-  border-inline-start: 1px solid var(--oc-gray-4);
+  border-block: 1px solid var(--color-border-subtle);
+  border-inline-start: 1px solid var(--color-border-subtle);
   text-align: center;
   overflow: hidden;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-muted);
 }
 
 #gantt_area .gantt_hdr {
   border-inline-start: 0;
-  border-inline-end: 1px solid var(--oc-gray-4);
+  border-inline-end: 1px solid var(--color-border-subtle);
 }
 
 .gantt_subjects_container:not(.draw_selected_columns) .gantt_hdr,
 .last_gantt_selected_column .gantt_hdr {
-  border-inline-end: 1px solid var(--oc-gray-4);
+  border-inline-end: 1px solid var(--color-border-subtle);
 }
 
 .last_gantt_selected_column .gantt_selected_column_container,
@@ -60,15 +62,16 @@ table.gantt-table td {
 }
 
 .gantt_hdr.nwday {
-  background-color: var(--oc-gray-1);
-  color: var(--oc-gray-6);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-muted);
 }
 
 .gantt_subjects,
 .gantt_selected_column_content.gantt_hdr {
-  font-size: 0.8em;
+  font-size: var(--text-xs);
   position: relative;
   z-index: 1;
+  color: var(--color-text-secondary);
 }
 
 .gantt_subjects div,
@@ -82,7 +85,7 @@ table.gantt-table td {
 }
 
 .gantt_subjects div.issue-subject:hover {
-  background-color: var(--oc-yellow-0);
+  background-color: var(--color-bg-hover);
 }
 
 .gantt_selected_column_content > div {
@@ -129,12 +132,13 @@ td.gantt_watcher_users_column div.issue_watcher_users ul li:not(:last-child)::af
 .task {
   position: absolute;
   block-size: 8px;
-  font-size: 0.8em;
-  color: var(--oc-gray-6);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
   padding: 0;
   margin: 0;
   line-height: 16px;
   white-space: nowrap;
+  border-radius: var(--radius-full);
 }
 
 .task.label {
@@ -147,24 +151,25 @@ td.gantt_watcher_users_column div.issue_watcher_users ul li:not(:last-child)::af
 }
 
 .task_late {
-  background: var(--oc-red-5) url(/task_late.png);
-  border: 1px solid var(--oc-red-5);
+  background: var(--color-danger-600) url(/task_late.png);
+  border: 1px solid var(--color-danger-600);
 }
 
 .task_done {
-  background: var(--oc-green-7) url(/task_done.png);
-  border: 1px solid var(--oc-green-7);
+  background: var(--color-success-600) url(/task_done.png);
+  border: 1px solid var(--color-success-600);
 }
 
 .task_todo {
-  background: var(--oc-gray-5) url(/task_todo.png);
-  border: 1px solid var(--oc-gray-5);
+  background: var(--color-neutral-400) url(/task_todo.png);
+  border: 1px solid var(--color-neutral-400);
 }
 
 .task_todo.parent {
-  background: var(--oc-gray-6);
-  border: 1px solid var(--oc-gray-6);
+  background: var(--color-neutral-500);
+  border: 1px solid var(--color-neutral-500);
   block-size: 3px;
+  border-radius: var(--radius-sm);
 }
 
 .task_late.parent,
@@ -193,22 +198,22 @@ td.gantt_watcher_users_column div.issue_watcher_users ul li:not(:last-child)::af
 }
 
 .version.task_late {
-  background: var(--oc-red-5) url(/milestone_late.png);
-  border: 1px solid var(--oc-red-5);
+  background: var(--color-danger-600) url(/milestone_late.png);
+  border: 1px solid var(--color-danger-600);
   block-size: 2px;
   margin-block-start: 3px;
 }
 
 .version.task_done {
-  background: var(--oc-green-7) url(/milestone_done.png);
-  border: 1px solid var(--oc-green-7);
+  background: var(--color-success-600) url(/milestone_done.png);
+  border: 1px solid var(--color-success-600);
   block-size: 2px;
   margin-block-start: 3px;
 }
 
 .version.task_todo {
-  background: var(--oc-white) url(/milestone_todo.png);
-  border: 1px solid var(--oc-white);
+  background: var(--color-bg-primary) url(/milestone_todo.png);
+  border: 1px solid var(--color-border-subtle);
   block-size: 2px;
   margin-block-start: 3px;
 }
@@ -222,22 +227,22 @@ td.gantt_watcher_users_column div.issue_watcher_users ul li:not(:last-child)::af
 }
 
 .project.task_late {
-  background: var(--oc-red-5) url(/milestone_late.png);
-  border: 1px solid var(--oc-red-5);
+  background: var(--color-danger-600) url(/milestone_late.png);
+  border: 1px solid var(--color-danger-600);
   block-size: 2px;
   margin-block-start: 3px;
 }
 
 .project.task_done {
-  background: var(--oc-green-7) url(/milestone_done.png);
-  border: 1px solid var(--oc-green-7);
+  background: var(--color-success-600) url(/milestone_done.png);
+  border: 1px solid var(--color-success-600);
   block-size: 2px;
   margin-block-start: 3px;
 }
 
 .project.task_todo {
-  background: var(--oc-white) url(/milestone_todo.png);
-  border: 1px solid var(--oc-white);
+  background: var(--color-bg-primary) url(/milestone_todo.png);
+  border: 1px solid var(--color-border-subtle);
   block-size: 2px;
   margin-block-start: 3px;
 }
@@ -258,11 +263,11 @@ td.gantt_watcher_users_column div.issue_watcher_users ul li:not(:last-child)::af
 
 .version-behind-schedule a,
 .issue-behind-schedule a {
-  color: var(--oc-yellow-8);
+  color: var(--color-warning-700);
 }
 
 .version-overdue a,
 .issue-overdue a,
 .project-overdue a {
-  color: var(--oc-red-8);
+  color: var(--color-danger-700);
 }

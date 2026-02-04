@@ -46,6 +46,7 @@ This document defines the hard constraints and rules that MUST be followed durin
 | No inline styles | All styles in CSS files |
 | rem units for font sizes | Never use px for font sizes |
 | Logical properties preferred | Use `margin-inline-start` instead of `margin-left` |
+| application.css is a manifest | Do not add style rules to `application.css` |
 
 ### 2.3 JavaScript Rules
 
@@ -109,7 +110,7 @@ This document defines the hard constraints and rules that MUST be followed durin
 - No information conveyed by color alone
 - No content that flashes more than 3 times per second
 - Skip navigation link for keyboard users
-- Logical heading hierarchy (h1 → h2 → h3)
+- Logical heading hierarchy (h1 -> h2 -> h3)
 
 ---
 
@@ -142,6 +143,7 @@ This document defines the hard constraints and rules that MUST be followed durin
 |----------|---------|
 | `app/assets/stylesheets/_design-tokens.css` | Design token variables |
 | `app/assets/stylesheets/_modern-reset.css` | CSS reset |
+| `app/assets/stylesheets/_legacy-base.css` | Legacy Redmine base styles (do not edit) |
 | `app/assets/stylesheets/_buttons.css` | Button styles |
 | `app/assets/stylesheets/_forms.css` | Form element styles |
 | `app/assets/stylesheets/_issues.css` | Issue-specific styles |
@@ -240,30 +242,30 @@ Each phase must update:
 
 ### DO
 
-✅ Use semantic HTML (`<article>`, `<section>`, `<nav>`)
-✅ Use CSS Grid and Flexbox for layouts
-✅ Add `aria-*` attributes for accessibility
-✅ Test changes in multiple browsers
-✅ Keep changes incremental and reviewable
-✅ Maintain existing functionality
-✅ Use design tokens for all values
-✅ Add focus styles to interactive elements
-✅ Support keyboard navigation
-✅ Write maintainable, clean CSS
+- Use semantic HTML (`<article>`, `<section>`, `<nav>`)
+- Use CSS Grid and Flexbox for layouts
+- Add `aria-*` attributes for accessibility
+- Test changes in multiple browsers
+- Keep changes incremental and reviewable
+- Maintain existing functionality
+- Use design tokens for all values
+- Add focus styles to interactive elements
+- Support keyboard navigation
+- Write maintainable, clean CSS
 
 ### DON'T
 
-❌ Remove existing features
-❌ Break existing URLs
-❌ Use px for font sizes
-❌ Add external dependencies
-❌ Modify Ruby backend code
-❌ Use inline styles
-❌ Use !important (except legacy fixes)
-❌ Hardcode colors (use variables)
-❌ Ignore accessibility
-❌ Make large, unreviewed changes
-❌ Skip testing
+- Remove existing features
+- Break existing URLs
+- Use px for font sizes
+- Add external dependencies
+- Modify Ruby backend code
+- Use inline styles
+- Use `!important` (except legacy or accessibility overrides)
+- Hardcode colors (use variables)
+- Ignore accessibility
+- Make large, unreviewed changes
+- Skip testing
 
 ---
 

@@ -17,19 +17,25 @@ This directory contains all documentation for the Redmine UI Modernization proje
 
 ```
 docs/
-├── README.md                    # This file
-├── IMPLEMENTATION-PLAN.md       # Phased implementation plan
-├── TASK-LIST.md                 # Detailed task tracking
-├── design/
-│   └── DESIGN-SYSTEM.md         # Design tokens, components, patterns
-├── specs/
-│   └── CONSTRAINTS.md           # Rules and constraints
-└── phases/
-    ├── PHASE-0-COMPLETE.md      # Phase 0 completion summary (create when done)
-    ├── PHASE-1-COMPLETE.md      # Phase 1 completion summary
-    └── ...                      # Additional phase summaries
+- README.md
+- IMPLEMENTATION-PLAN.md
+- TASK-LIST.md
+- design/
+  - DESIGN-SYSTEM.md
+- specs/
+  - CONSTRAINTS.md
+- phases/
+  - PHASE-0-COMPLETE.md
+  - PHASE-1-COMPLETE.md
+  - PHASE-2-COMPLETE.md
+  - PHASE-3-COMPLETE.md
+  - PHASE-4-COMPLETE.md
+  - PHASE-5-COMPLETE.md
+  - PHASE-6-COMPLETE.md
+  - PHASE-7-COMPLETE.md
+  - PHASE-8-COMPLETE.md
+  - ALL-PHASES-COMPLETE.md
 ```
-
 ## Development Workflow
 
 ### Before Starting Work
@@ -78,15 +84,15 @@ Before marking a phase complete:
 
 | Phase | Status | Description |
 |-------|--------|-------------|
-| 0 | ✅ Complete | Foundation Setup |
-| 1 | ✅ Complete | Global Chrome & Layout |
-| 2 | ✅ Complete | Typography & Base Elements |
-| 3 | ✅ Complete | Buttons & Form Controls |
-| 4 | ✅ Complete | Issue List & Issue Detail |
-| 5 | ✅ Complete | Project Views & Navigation |
-| 6 | ✅ Complete | Secondary Views |
-| 7 | ✅ Complete | Dark Mode |
-| 8 | ✅ Complete | Polish & Performance |
+| 0 | Implemented | Foundation Setup |
+| 1 | Implemented | Global Chrome & Layout |
+| 2 | Implemented | Typography & Base Elements |
+| 3 | Implemented | Buttons & Form Controls |
+| 4 | Implemented | Issue List & Issue Detail |
+| 5 | Implemented | Project Views & Navigation |
+| 6 | Implemented | Secondary Views |
+| 7 | Implemented | Dark Mode |
+| 8 | Implemented | Polish & Performance |
 
 ## Reference Applications
 
@@ -96,3 +102,4 @@ Study these for inspiration:
 - [Jira](https://atlassian.com/jira) - Board views
 - [Height](https://height.app) - Clean aesthetics
 - [Plane](https://plane.so) - Open source, modern
+

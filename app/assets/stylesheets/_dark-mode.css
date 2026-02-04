@@ -20,13 +20,13 @@
   --color-text-link-hover: var(--oc-blue-3);
 
   /* Semantic Background Colors */
-  --color-bg-primary: #1a1a1a;
-  --color-bg-secondary: #242424;
-  --color-bg-tertiary: #2e2e2e;
-  --color-bg-elevated: #2e2e2e;
-  --color-bg-hover: #383838;
-  --color-bg-active: #424242;
-  --color-bg-selected: rgba(51, 154, 240, 0.15);
+  --color-bg-primary: var(--oc-gray-9);
+  --color-bg-secondary: var(--oc-gray-8);
+  --color-bg-tertiary: var(--oc-gray-7);
+  --color-bg-elevated: var(--oc-gray-8);
+  --color-bg-hover: var(--oc-gray-7);
+  --color-bg-active: var(--oc-gray-6);
+  --color-bg-selected: rgba(var(--oc-blue-5-rgb), 0.15);
 
   /* Semantic Border Colors */
   --color-border-default: var(--oc-gray-7);
@@ -70,6 +70,28 @@
   color-scheme: dark;
 }
 
+[data-theme="dark"] body {
+  background: var(--oc-gray-9) !important;
+}
+
+[data-theme="dark"] #header {
+  background: var(--oc-black) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] #top-menu {
+  background: var(--oc-gray-9) !important;
+  border-color: var(--oc-gray-7) !important;
+}
+
+[data-theme="dark"] #content,
+[data-theme="dark"] #sidebar,
+[data-theme="dark"] .box {
+  background: var(--oc-gray-8) !important;
+  border-color: var(--oc-gray-7) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
 /* Scrollbar styling for dark mode */
 [data-theme="dark"] ::-webkit-scrollbar {
   width: 12px;
@@ -100,9 +122,9 @@
 [data-theme="dark"] input,
 [data-theme="dark"] textarea,
 [data-theme="dark"] select {
-  background-color: var(--color-bg-secondary);
-  border-color: var(--color-border-default);
-  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary) !important;
+  border-color: var(--color-border-default) !important;
+  color: var(--color-text-primary) !important;
 }
 
 [data-theme="dark"] input::placeholder,
@@ -111,12 +133,17 @@
 }
 
 /* Tables in dark mode */
-[data-theme="dark"] table th {
-  background-color: var(--color-bg-tertiary);
+[data-theme="dark"] table.list th {
+  background-color: transparent !important;
+  border-color: var(--oc-gray-7) !important;
 }
 
-[data-theme="dark"] table tr:hover {
-  background-color: var(--color-bg-hover);
+[data-theme="dark"] table.list td {
+  border-color: var(--oc-gray-8) !important;
+}
+
+[data-theme="dark"] table.list tr:hover {
+  background-color: var(--color-bg-hover) !important;
 }
 
 /* Images - add subtle background for transparent images */

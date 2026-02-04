@@ -6,7 +6,7 @@ Phases 1-4 implemented the core visual modernization of the Redmine interface, i
 
 ---
 
-## Phase 1: Global Chrome & Layout ✅
+## Phase 1: Global Chrome & Layout (Complete)
 
 ### Changes Made
 
@@ -23,7 +23,7 @@ Phases 1-4 implemented the core visual modernization of the Redmine interface, i
 
 ---
 
-## Phase 2: Typography & Base Elements ✅
+## Phase 2: Typography & Base Elements (Complete)
 
 ### Changes Made
 
@@ -39,7 +39,7 @@ Phases 1-4 implemented the core visual modernization of the Redmine interface, i
 
 ---
 
-## Phase 3: Buttons & Form Controls ✅
+## Phase 3: Buttons & Form Controls (Complete)
 
 ### Changes Made
 
@@ -60,7 +60,7 @@ Phases 1-4 implemented the core visual modernization of the Redmine interface, i
 
 ---
 
-## Phase 4: Issue List & Detail (In Progress) ✅
+## Phase 4: Issue List & Detail (Complete)
 
 ### Changes Made
 
@@ -101,6 +101,7 @@ Phases 1-4 implemented the core visual modernization of the Redmine interface, i
 @import url('/_design-tokens.css');
 @import url('/_modern-reset.css');
 @import url('/_dark-mode.css');
+@import url('/_legacy-base.css');
 @import url('/_modern-layout.css');
 @import url('/_modern-typography.css');
 @import url('/_buttons.css');
@@ -133,30 +134,7 @@ Phases 1-4 implemented the core visual modernization of the Redmine interface, i
 
 ## Remaining Work
 
-### Phase 5: Project Views & Navigation
-- Project list cards
-- Project overview dashboard
-- Project navigation improvements
-
-### Phase 6: Secondary Views
-- Wiki styling
-- Files/Documents
-- Time tracking
-- Calendar
-- Gantt chart
-- Repository browser
-
-### Phase 7: Dark Mode
-- Theme toggle UI
-- Apply dark mode styles
-- Test all components
-
-### Phase 8: Polish & Performance
-- Animations
-- Loading states
-- Performance audit
-- Accessibility audit
-- Browser testing
+Completed in Phases 5-8. See `docs/phases/PHASE-5-COMPLETE.md` through `docs/phases/PHASE-8-COMPLETE.md` for details.
 
 ---
 

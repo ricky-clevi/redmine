@@ -2,7 +2,7 @@
 
 ## Summary
 
-Phase 0 established the foundation for the UI modernization project by creating the design token system, CSS reset, and dark mode infrastructure.
+Phase 0 established the foundation for the UI modernization project by creating the design token system, CSS reset, dark mode infrastructure, and extracting legacy base styles into a dedicated file.
 
 ## Completed Tasks
 
@@ -37,6 +37,11 @@ Phase 0 established the foundation for the UI modernization project by creating 
 - [X] Added form element resets
 - [X] Added `.sr-only` utility class for screen readers
 
+### 0.5 Legacy Base Extraction
+- [X] Created `_legacy-base.css` and moved legacy `application.css` rules into it
+- [X] Converted `application.css` into a manifest of `@import` statements
+- [X] Ensured `_legacy-base.css` loads before modern overrides
+
 ## Files Created/Modified
 
 ### New Files
@@ -45,11 +50,12 @@ Phase 0 established the foundation for the UI modernization project by creating 
 | `app/assets/stylesheets/_design-tokens.css` | ~200 | All design token variables |
 | `app/assets/stylesheets/_dark-mode.css` | ~110 | Dark mode color overrides |
 | `app/assets/stylesheets/_modern-reset.css` | ~150 | Modern CSS reset |
+| `app/assets/stylesheets/_legacy-base.css` | ~2500 | Legacy Redmine base styles |
 
 ### Modified Files
 | File | Change |
 |------|--------|
-| `app/assets/stylesheets/application.css` | Added 3 import statements |
+| `app/assets/stylesheets/application.css` | Converted to manifest and updated import order |
 
 ## Design Token Categories
 

@@ -11,6 +11,11 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 **Total Estimated Phases**: 8
 **Approach**: CSS-first transformation, then template modifications, then JavaScript enhancements
 
+**Architecture Note**:
+- `application.css` is a manifest that only contains `@import` statements.
+- Legacy Redmine base styles live in `_legacy-base.css` (imported before modern overrides).
+- Modern overrides live in `_modern-*.css` files and load after `_legacy-base.css`.
+
 ---
 
 ## Phase 0: Foundation Setup (PREREQUISITE)
@@ -38,6 +43,12 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 - **Action**: Add modern CSS reset (box-sizing, margins, etc.)
 - **Verify**: No broken layouts
 
+#### 0.5 Extract Legacy Base Styles
+- **File**: `app/assets/stylesheets/_legacy-base.css`
+- **Action**: Move all existing `application.css` rules (everything after `@import` statements) into `_legacy-base.css`
+- **Action**: Convert `application.css` into a manifest that only contains `@import` statements
+- **Verify**: Legacy styles still load before modern overrides
+
 ### Verification Checklist
 - [ ] All design token variables are defined
 - [ ] CSS loads without errors
@@ -52,27 +63,27 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 ### Tasks
 
 #### 1.1 Modernize Top Menu Bar
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-layout.css`
 - **Target**: `#top-menu` styles (lines 77-95)
 - **Changes**:
-  - Height: 40px
-  - Background: `var(--color-bg-primary)`
+  - Min-height: 36px
+  - Background: `var(--color-bg-secondary)`
   - Border-bottom: `1px solid var(--color-border-subtle)`
   - Remove gradient
   - Update link colors to use design tokens
 
 #### 1.2 Redesign Main Header
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-layout.css`
 - **Target**: `#header` styles (lines 97-130)
 - **Changes**:
   - Remove gradient background
-  - Use solid color: `var(--color-primary-600)`
-  - Reduce height
+  - Use solid color: `var(--color-primary-700)`
+  - Reduce vertical padding
   - Modernize search box styling
   - Clean up breadcrumbs
 
 #### 1.3 Transform Main Menu Tabs
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-layout.css`
 - **Target**: `#main-menu` styles (lines 123-175)
 - **Changes**:
   - Convert from tabs to horizontal links
@@ -81,16 +92,16 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
   - Active state indicator
 
 #### 1.4 Redesign Sidebar
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-layout.css`
 - **Target**: `#sidebar` styles (lines 181-210)
 - **Changes**:
   - Cleaner background
   - Better typography hierarchy
   - Improved link styles
-  - Collapsible sections
+  - Retain existing collapsible sidebar toggle
 
 #### 1.5 Modernize Footer
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-layout.css`
 - **Target**: `#footer` styles
 - **Changes**:
   - Minimal footer design
@@ -98,7 +109,7 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
   - Proper spacing
 
 #### 1.6 Update Base Layout Container
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-layout.css`
 - **Target**: `#wrapper`, `#main`, `#content` styles
 - **Changes**:
   - Max-width constraint for readability
@@ -122,7 +133,7 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 ### Tasks
 
 #### 2.1 Heading Styles
-- **File**: `app/assets/stylesheets/application.css`
+- **File**: `app/assets/stylesheets/_modern-typography.css`
 - **Target**: `h1` through `h6` styles
 - **Changes**:
   - Use design token font sizes
@@ -246,7 +257,7 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 ### Tasks
 
 #### 4.1 Issue List Table
-- **File**: `app/views/issues/index.html.erb` (template), CSS
+- **File**: `app/assets/stylesheets/_issues.css` (CSS only)
 - **Changes**:
   - Cleaner table design
   - Compact rows
@@ -274,7 +285,7 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 - **Color coding**
 
 #### 4.5 Issue Detail Header
-- **File**: `app/views/issues/show.html.erb`
+- **File**: `app/assets/stylesheets/_issues.css` (CSS only)
 - **Changes**:
   - Clean header layout
   - Status/Priority prominent
@@ -335,11 +346,13 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 - **Changes**:
   - Tab navigation
   - Form layouts
+  - CSS-only updates in `_projects.css`
 
 #### 5.5 Project Jump Box
 - **Changes**:
   - Autocomplete redesign
   - Better UX
+  - CSS-only updates in `_projects.css`
 
 ### Verification Checklist
 - [ ] Project list is modern
@@ -355,29 +368,35 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 ### Tasks
 
 #### 6.1 Wiki Pages
+- **File**: `app/assets/stylesheets/_secondary-views.css`
 - **Typography updates**
 - **Table of contents styling**
 - **Edit mode improvements**
 
 #### 6.2 Files/Documents View
+- **File**: `app/assets/stylesheets/_secondary-views.css`
 - **File list redesign**
 - **Upload interface**
 - **File type icons**
 
 #### 6.3 Time Tracking
+- **File**: `app/assets/stylesheets/_secondary-views.css`
 - **Time log table**
 - **Time entry form**
 
 #### 6.4 Calendar View
+- **File**: `app/assets/stylesheets/_secondary-views.css`
 - **Modern calendar styling**
 - **Event indicators**
 
 #### 6.5 Gantt Chart
+- **File**: `app/assets/stylesheets/gantt.css`
 - **Cleaner bars**
 - **Better colors**
 - **Improved readability**
 
 #### 6.6 Repository Browser
+- **File**: `app/assets/stylesheets/scm.css`
 - **File tree styling**
 - **Diff view improvements**
 - **Commit history**
@@ -398,18 +417,18 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 ### Tasks
 
 #### 7.1 Add Theme Toggle UI
-- **Location**: Top bar or user menu
+- **Location**: `app/views/layouts/base.html.erb` (top bar)
 - **Functionality**: Toggle between light/dark
 
 #### 7.2 JavaScript Theme Handler
-- **File**: `app/javascript/theme-toggle.js`
+- **File**: `app/javascript/theme_toggle.js`
 - **Features**:
   - Save preference to localStorage
   - Respect system preference
   - Toggle data-theme attribute
 
 #### 7.3 Apply Dark Mode Styles
-- **File**: `_dark-mode.css`
+- **File**: `app/assets/stylesheets/_dark-mode.css`
 - **Apply all dark mode overrides**
 
 #### 7.4 Test All Components in Dark Mode
@@ -468,16 +487,14 @@ This document outlines a phased approach to modernizing Redmine's UI. Each phase
 
 ## Implementation Order Summary
 
-```
-Phase 0: Foundation Setup
-    └── Phase 1: Global Chrome & Layout
-        └── Phase 2: Typography & Base Elements
-            └── Phase 3: Buttons & Form Controls
-                └── Phase 4: Issue List & Issue Detail Views
-                    └── Phase 5: Project Views & Navigation
-                        └── Phase 6: Secondary Views & Components
-                            └── Phase 7: Dark Mode & Theme Toggle
-                                └── Phase 8: Polish & Performance
-```
+1. Phase 0: Foundation Setup
+2. Phase 1: Global Chrome & Layout
+3. Phase 2: Typography & Base Elements
+4. Phase 3: Buttons & Form Controls
+5. Phase 4: Issue List & Issue Detail Views
+6. Phase 5: Project Views & Navigation
+7. Phase 6: Secondary Views & Components
+8. Phase 7: Dark Mode & Theme Toggle
+9. Phase 8: Polish & Performance
 
 Each phase MUST be completed and verified before moving to the next.
