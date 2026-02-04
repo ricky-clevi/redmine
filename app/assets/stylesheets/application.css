@@ -4,17 +4,16 @@
  * This code is released under the GNU General Public License.
  */
 
-@import url('/open-color.css');
-@import url('/_design-tokens.css');
-@import url('/_modern-reset.css');
-@import url('/_dark-mode.css');
-@import url('/_legacy-base.css');
-@import url('/_modern-layout.css');
-@import url('/_modern-typography.css');
-@import url('/_buttons.css');
-@import url('/_forms.css');
-@import url('/_issues.css');
-@import url('/_projects.css');
-@import url('/_secondary-views.css');
-@import url('/_polish.css');
-
+@import url('open-color.css');
+@import url('_design-tokens.css');
+@import url('_modern-reset.css');
+@import url('_dark-mode.css');
+@import url('_legacy-base.css');
+@import url('_modern-layout.css');
+@import url('_modern-typography.css');
+@import url('_buttons.css');
+@import url('_forms.css');
+@import url('_issues.css');
+@import url('_projects.css');
+@import url('_secondary-views.css');
+@import url('_polish.css');

@@ -1,389 +1,150 @@
 /**
- * Redmine Modern UI - Forms (Phase 3)
+ * Redmine Modern UI - Forms (Phase 2 Radical Redesign)
  * 
- * Modern form element styles using design tokens.
+ * Clean Inputs, Focus Rings, and Tabular Layouts
  */
 
 /* ============================================
- * FORM LAYOUT
- * ============================================ */
-
-form {
-  margin: 0;
-}
-
-fieldset {
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin-block-end: var(--space-4);
-}
-
-legend {
-  font-weight: var(--font-semibold);
-  padding-inline: var(--space-2);
-  color: var(--color-text-secondary);
-}
-
-/* ============================================
- * LABELS
- * ============================================ */
-
-label {
-  display: block;
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-text-primary);
-  margin-block-end: var(--space-1-5);
-}
-
-label.required::after {
-  content: " *";
-  color: var(--color-danger-500);
-}
-
-/* Inline labels (for checkboxes/radios) */
-label.inline {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-weight: var(--font-normal);
-  cursor: pointer;
-}
-
-/* ============================================
- * TEXT INPUTS
+ * INPUTS & CONTROLS
  * ============================================ */
 
 input[type="text"],
-input[type="email"],
 input[type="password"],
-input[type="search"],
+input[type="email"],
+input[type="number"],
 input[type="tel"],
 input[type="url"],
-input[type="number"],
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
+input[type="search"],
 textarea,
 select {
-  display: block !important;
-  width: 100% !important;
-  height: 40px !important;
-  padding: 8px 12px !important;
-
-  font-family: var(--font-sans) !important;
-  font-size: var(--text-sm) !important;
-  color: var(--color-text-primary) !important;
-
-  background: var(--color-bg-primary) !important;
+  background-color: var(--color-surface-card) !important;
   border: 1px solid var(--color-border-default) !important;
-  border-radius: var(--radius-lg) !important;
-
+  border-radius: var(--radius-md) !important;
+  padding: 8px 12px !important;
+  font-family: inherit !important;
+  font-size: var(--text-sm) !important;
+  line-height: var(--leading-normal) !important;
+  color: var(--color-text-primary) !important;
   transition: border-color 0.15s, box-shadow 0.15s !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
-input:hover,
-textarea:hover,
-select:hover {
-  border-color: var(--color-border-strong) !important;
+/* Adjust width for inline contexts if needed, but default to full width for mobile first */
+p input,
+p select {
+  width: auto !important;
+  min-width: 200px;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none !important;
-  border-color: var(--color-border-focus) !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+  border-color: var(--color-primary-500) !important;
+  box-shadow: 0 0 0 3px var(--color-primary-100) !important;
 }
 
-textarea {
-  height: auto !important;
-  min-height: 120px !important;
-}
-
+input::placeholder,
 textarea::placeholder {
-  color: var(--color-text-muted);
+  color: var(--color-text-muted) !important;
+  opacity: 1;
 }
 
-/* ============================================
- * SELECT DROPDOWN
- * ============================================ */
-
-select {
-  display: block;
-  width: 100%;
-  height: var(--height-input-md);
-  padding-inline: var(--space-3);
-  padding-inline-end: var(--space-8);
-
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  color: var(--color-text-primary);
-
-  background: var(--color-bg-primary);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23868e96' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right var(--space-3) center;
-
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-
-  cursor: pointer;
-  appearance: none;
-  transition: var(--transition-colors), var(--transition-shadow);
-}
-
-select:hover {
-  border-color: var(--color-border-strong);
-}
-
-select:focus {
-  outline: none;
-  border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-focus-ring);
-}
-
+/* Disabled state */
+input:disabled,
+textarea:disabled,
 select:disabled {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-text-disabled);
-  cursor: not-allowed;
-}
-
-select[multiple] {
-  height: auto;
-  min-height: 120px;
-  padding: var(--space-2);
-  background-image: none;
-}
-
-select[multiple] option {
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
+  background-color: var(--color-neutral-100) !important;
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
 }
 
 /* ============================================
- * CHECKBOXES
+ * BUTTONS
  * ============================================ */
 
-input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  cursor: pointer;
-  accent-color: var(--color-primary-600);
-}
-
-input[type="checkbox"]:focus-visible {
-  outline: 2px solid var(--color-border-focus);
-  outline-offset: 2px;
-}
-
-/* ============================================
- * RADIO BUTTONS
- * ============================================ */
-
-input[type="radio"] {
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  cursor: pointer;
-  accent-color: var(--color-primary-600);
-}
-
-input[type="radio"]:focus-visible {
-  outline: 2px solid var(--color-border-focus);
-  outline-offset: 2px;
-}
-
-/* ============================================
- * FILE INPUT
- * ============================================ */
-
-input[type="file"] {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-}
-
-input[type="file"]::file-selector-button {
-  height: var(--height-input-sm);
-  padding-inline: var(--space-3);
-  margin-inline-end: var(--space-3);
-
-  font-family: var(--font-sans);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-text-primary);
-
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-}
-
-input[type="file"]::file-selector-button:hover {
-  background: var(--color-bg-hover);
-}
-
-/* ============================================
- * FORM FIELD CONTAINER
- * ============================================ */
-
-.form-field {
-  margin-block-end: var(--space-4);
-}
-
-.form-field__label {
-  display: block;
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-text-primary);
-  margin-block-end: var(--space-1-5);
-}
-
-.form-field__hint {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  margin-block-start: var(--space-1);
-}
-
-.form-field__error {
-  display: block;
-  font-size: var(--text-xs);
-  color: var(--color-danger-600);
-  margin-block-start: var(--space-1);
-}
-
-/* ============================================
- * INLINE FORM ELEMENTS
- * ============================================ */
-
-.form-inline {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.form-inline label {
-  margin-block-end: 0;
-}
-
-.form-inline input,
-.form-inline select {
-  width: auto;
-}
-
-/* ============================================
- * ERROR STATES
- * ============================================ */
-
-input.error,
-textarea.error,
-select.error,
-input:invalid,
-textarea:invalid,
-select:invalid {
-  border-color: var(--color-danger-500);
-}
-
-input.error:focus,
-textarea.error:focus,
-select.error:focus {
-  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-danger-500);
-}
-
-/* Error messages */
-.errorExplanation,
-#errorExplanation,
-.flash {
+input[type="submit"],
+input[type="button"],
+button,
+.button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 16px !important;
+  font-size: var(--text-sm) !important;
+  font-weight: var(--font-medium) !important;
+  line-height: normal !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  border-radius: var(--radius-md) !important;
+  transition: all 0.15s ease !important;
   border: 1px solid transparent !important;
-  border-radius: var(--radius-xl) !important;
-  padding: 16px 20px !important;
-  margin-block-end: 24px !important;
 }
 
-#flash_notice,
-.flash.notice {
-  background: var(--color-success-50) !important;
-  border-color: var(--color-success-500) !important;
-  color: var(--color-success-700) !important;
+/* Primary Button */
+input[name="commit"],
+input[type="submit"] {
+  background-color: var(--color-primary-600) !important;
+  color: white !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
 }
 
-#flash_warning,
-.flash.warning {
-  background: var(--color-warning-50) !important;
-  border-color: var(--color-warning-500) !important;
-  color: var(--color-warning-700) !important;
+input[name="commit"]:hover,
+input[type="submit"]:hover {
+  background-color: var(--color-primary-700) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
 }
 
-#flash_error,
-.flash.error,
-.errorExplanation,
-#errorExplanation {
-  background: var(--color-danger-50) !important;
-  border-color: var(--color-danger-500) !important;
-  color: var(--color-danger-700) !important;
+/* Secondary/Generic Button */
+input[type="button"],
+button {
+  background-color: white !important;
+  border-color: var(--color-neutral-300) !important;
+  color: var(--color-neutral-700) !important;
+}
+
+input[type="button"]:hover,
+button:hover {
+  background-color: var(--color-neutral-50) !important;
+  border-color: var(--color-neutral-400) !important;
 }
 
 /* ============================================
- * REDMINE SPECIFIC FORM LAYOUTS
+ * FORM LAYOUTS
  * ============================================ */
 
-/* Attribute box (issue form, etc.) */
-.box {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin-block-end: var(--space-4);
-}
-
-/* Tabular form layout */
+/* Tabular forms (Settings, etc) */
 .tabular p {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--space-2);
-  margin-block-end: var(--space-3);
+  padding-left: 0 !important;
+  margin-bottom: var(--space-4) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
 }
 
 .tabular label {
-  flex: 0 0 200px;
-  text-align: end;
-  padding-block-start: var(--space-2);
-  margin-block-end: 0;
+  float: none !important;
+  width: auto !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  font-weight: var(--font-medium) !important;
+  margin-bottom: var(--space-2) !important;
+  font-size: var(--text-sm) !important;
+  color: var(--color-text-secondary) !important;
 }
 
-.tabular input,
-.tabular select,
-.tabular textarea {
-  flex: 1;
-  min-inline-size: 0;
+/* Required field indicator */
+.required {
+  color: var(--color-danger-600) !important;
+  margin-left: 2px !important;
 }
 
-.tabular .wiki-edit {
-  flex: 1;
-  min-inline-size: 0;
-}
-
-/* Splitcontentleft/right */
-.splitcontentleft {
-  width: 49%;
-  float: left;
-}
-
-.splitcontentright {
-  width: 49%;
-  float: right;
-}
-
-@media (max-width: 900px) {
-
-  .splitcontentleft,
-  .splitcontentright {
-    width: 100%;
-    float: none;
-  }
+/* Form sections */
+.box.tabular {
+  background: var(--color-surface-card) !important;
+  border: none !important;
+  box-shadow: var(--shadow-card) !important;
+  padding: var(--space-6) !important;
 }
