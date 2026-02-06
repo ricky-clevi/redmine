@@ -40,8 +40,8 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 textarea:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
 }
 
 input::placeholder,
@@ -89,8 +89,8 @@ select {
 
 select:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.2);
 }
 
 select:disabled {
@@ -183,19 +183,19 @@ button[type="submit"],
   font-weight: var(--font-medium);
   line-height: var(--leading-normal);
   color: #ffffff;
-  background-color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  background: var(--gradient-brand);
+  border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   box-shadow: var(--shadow-sm);
 }
 
 input[type="submit"]:hover,
 button[type="submit"]:hover,
 .button-positive:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-primary);
 }
 
 input[type="submit"]:focus,
@@ -265,8 +265,12 @@ button.delete:hover {
  * TABULAR FORM LAYOUT
  * Used in Settings, User edit, etc.
  * ============================================ */
+/* ============================================
+ * TABULAR FORM LAYOUT
+ * Used in Settings, User edit, etc.
+ * ============================================ */
 .tabular {
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .tabular p {
@@ -281,8 +285,10 @@ button.delete:hover {
   width: auto;
   float: none;
   text-align: left;
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-2);
   font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
 }
 
 .tabular input[type="text"],
@@ -292,7 +298,8 @@ button.delete:hover {
 .tabular textarea,
 .tabular select {
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
+  /* Allow full width of container */
 }
 
 /* ============================================
@@ -412,4 +419,74 @@ p.buttons {
   margin-top: var(--space-4);
   padding-top: var(--space-4);
   border-top: 1px solid var(--color-border-default);
+}
+
+/* ============================================
+ * LOGIN FORM OVERRIDES
+ * Fix legacy peach/orange background
+ * ============================================ */
+#login-form,
+.login-box,
+body.controller-account #content form,
+body.controller-account #content>div {
+  background-color: var(--color-bg-card) !important;
+  background: var(--color-bg-card) !important;
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--space-6) !important;
+  box-shadow: var(--shadow-lg) !important;
+  max-width: 400px !important;
+  margin: var(--space-8) auto !important;
+}
+
+body.controller-account #content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Force vertical label layout on login/register forms */
+body.controller-account .tabular p,
+body.controller-account form p {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  margin-bottom: var(--space-4) !important;
+}
+
+body.controller-account .tabular label,
+body.controller-account form label {
+  float: none !important;
+  width: auto !important;
+  text-align: left !important;
+  margin-bottom: var(--space-2) !important;
+  font-weight: var(--font-medium) !important;
+  color: var(--color-text-primary) !important;
+}
+
+body.controller-account input[type="text"],
+body.controller-account input[type="password"] {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+body.controller-account input[type="submit"],
+body.controller-account button[type="submit"] {
+  width: 100% !important;
+  margin-top: var(--space-4) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  background: var(--gradient-brand) !important;
+  color: var(--color-text-inverse) !important;
+  border: none !important;
+  border-radius: var(--radius-lg) !important;
+  font-size: var(--text-base) !important;
+  font-weight: var(--font-semibold) !important;
+  cursor: pointer !important;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal) !important;
+}
+
+body.controller-account input[type="submit"]:hover,
+body.controller-account button[type="submit"]:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-primary) !important;
 }

@@ -1,0 +1,50 @@
+/**
+ * Redmine Modern UI - Theme Overrides
+ * Complete UI Renewal - Phase 3
+ * 
+ * This file MUST be loaded LAST to override legacy styles.
+ */
+
+/* ============================================
+ * ISSUE DETAIL VIEW
+ * Overrides legacy yellow background
+ * ============================================ */
+div.issue {
+    background-color: var(--color-bg-muted) !important;
+    padding: var(--space-5) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--color-border-default) !important;
+}
+
+/* ============================================
+ * LOGIN FORM
+ * Override legacy orange/peach background
+ * ============================================ */
+#login-form {
+    background-color: var(--color-bg-card) !important;
+    border: 1px solid var(--color-border-default) !important;
+}
+
+/* ============================================
+ * TABLE ROW HOVER
+ * Override legacy yellow hover
+ * ============================================ */
+table.list:not(.odd-even) tbody tr:nth-child(odd):hover,
+table.list:not(.odd-even) tbody tr:nth-child(even):hover,
+.odd:hover,
+.even:hover {
+    background-color: var(--color-bg-hover) !important;
+}
+
+/* ============================================
+ * HEADER
+ * Override legacy gradient
+ * ============================================ */
+#header {
+    background: var(--color-bg-brand) !important;
+    background-image: none !important;
+}
+
+#top-menu {
+    background: #1a1a1c !important;
+}

@@ -1,89 +1,129 @@
 /**
  * Redmine Modern UI - Design Tokens
- * Complete UI Renewal - Phase 3
+ * Complete UI Renewal - Phase 5
  * 
- * All CSS custom properties for the design system
+ * Linear App Color Palette
+ * Primary: Nordic Gray (#222326)
+ * Accent: Soft blue for interactive elements
  */
 
 :root {
   /* ============================================
+   * COLOR PALETTE - Linear Brand Colors
+   * ============================================ */
+  --linear-nordic: #222326;
+  --linear-nordic-light: #36373C;
+  --linear-mercury: #F4F5F8;
+  --linear-oslo: #8A8F98;
+
+  /* ============================================
    * COLOR PALETTE - Backgrounds
    * ============================================ */
-  --color-bg-app: #f8fafc;
-  /* Page background (slate-50) */
+  --color-bg-app: #F4F5F8;
+  /* Mercury White - main background */
   --color-bg-card: #ffffff;
   /* Cards, panels, content areas */
   --color-bg-elevated: #ffffff;
   /* Dropdowns, modals, popovers */
-  --color-bg-muted: #f1f5f9;
-  /* Table headers, code blocks (slate-100) */
-  --color-bg-hover: #f1f5f9;
+  --color-bg-muted: #EDEEF1;
+  /* Table headers, code blocks */
+  --color-bg-hover: #F0F1F4;
   /* Row/item hover states */
-  --color-bg-active: #e2e8f0;
-  /* Active/pressed states (slate-200) */
-  --color-bg-brand: #1e40af;
-  /* Primary header (blue-800) */
-  --color-bg-brand-hover: #1e3a8a;
-  /* Header hover (blue-900) */
+  --color-bg-active: #E4E5EA;
+  /* Active/pressed states */
+  --color-bg-brand: #222326;
+  /* Primary brand (Nordic Gray) */
+  --color-bg-brand-hover: #36373C;
+  /* Brand hover */
+  --color-bg-brand-dark: #18191B;
+  /* Darker brand for top bar */
 
   /* ============================================
    * COLOR PALETTE - Text
    * ============================================ */
-  --color-text-primary: #0f172a;
-  /* Main text (slate-900) */
-  --color-text-secondary: #475569;
-  /* Secondary text (slate-600) */
-  --color-text-muted: #94a3b8;
-  /* Placeholder, disabled (slate-400) */
+  --color-text-primary: #222326;
+  /* Nordic Gray - main text */
+  --color-text-secondary: #4A4D55;
+  /* Secondary text */
+  --color-text-muted: #8A8F98;
+  /* Oslo Gray - muted text */
+  --color-text-tertiary: #B0B5BD;
+  /* Very muted */
   --color-text-inverse: #ffffff;
   /* Text on dark backgrounds */
 
   /* ============================================
    * COLOR PALETTE - Borders
    * ============================================ */
-  --color-border-default: #e2e8f0;
-  /* Default borders (slate-200) */
-  --color-border-strong: #cbd5e1;
-  /* Emphasized borders (slate-300) */
-  --color-border-focus: #2563eb;
-  /* Focus ring color (blue-600) */
+  --color-border-default: #E4E5EA;
+  /* Default borders */
+  --color-border-strong: #D0D2D9;
+  /* Emphasized borders */
+  --color-border-focus: #222326;
+  /* Focus ring (Nordic Gray) */
 
   /* ============================================
-   * COLOR PALETTE - Accent & Semantic
+   * COLOR PALETTE - Primary (Nordic Gray)
    * ============================================ */
-  --color-accent: #2563eb;
-  /* Links, focus rings, primary buttons (blue-600) */
-  --color-accent-hover: #1d4ed8;
-  /* Hover state for accent (blue-700) */
-  --color-accent-light: #dbeafe;
-  /* Light accent background (blue-100) */
+  --color-primary: #222326;
+  /* Primary color - Nordic Gray */
+  --color-primary-hover: #36373C;
+  /* Primary hover */
+  --color-primary-light: #E4E5EA;
+  /* Light primary background */
+  --color-primary-dark: #18191B;
+  /* Dark primary */
 
-  --color-success: #16a34a;
-  /* Success states (green-600) */
-  --color-success-light: #dcfce7;
-  /* Success background (green-100) */
-  --color-success-border: #86efac;
-  /* Success border (green-300) */
+  /* ============================================
+   * COLOR PALETTE - Accent (Soft Blue for links)
+   * ============================================ */
+  --color-accent: #3B82F6;
+  /* Links/interactive - blue-500 */
+  --color-accent-hover: #2563EB;
+  /* Hover state - blue-600 */
+  --color-accent-light: #DBEAFE;
+  /* Light accent background */
+  --color-accent-dark: #1D4ED8;
+  /* Dark accent */
+
+  /* ============================================
+   * COLOR PALETTE - Semantic
+   * ============================================ */
+  --color-success: #22C55E;
+  /* Success - green-500 */
+  --color-success-light: #DCFCE7;
+  /* Success background */
+  --color-success-border: #86EFAC;
+  /* Success border */
   --color-success-text: #166534;
-  /* Success text (green-800) */
+  /* Success text */
 
-  --color-warning: #ca8a04;
-  /* Warning states (yellow-600) */
-  --color-warning-light: #fef9c3;
-  /* Warning background (yellow-100) */
-  --color-warning-border: #fde047;
-  /* Warning border (yellow-300) */
-  --color-warning-text: #854d0e;
-  /* Warning text (yellow-800) */
+  --color-warning: #F59E0B;
+  /* Warning - amber-500 */
+  --color-warning-light: #FEF3C7;
+  /* Warning background */
+  --color-warning-border: #FCD34D;
+  /* Warning border */
+  --color-warning-text: #92400E;
+  /* Warning text */
 
-  --color-danger: #dc2626;
-  /* Error states (red-600) */
-  --color-danger-light: #fee2e2;
-  /* Error background (red-100) */
-  --color-danger-border: #fca5a5;
-  /* Error border (red-300) */
-  --color-danger-text: #991b1b;
-  /* Error text (red-800) */
+  --color-danger: #EF4444;
+  /* Error - red-500 */
+  --color-danger-light: #FEE2E2;
+  /* Error background */
+  --color-danger-border: #FCA5A5;
+  /* Error border */
+  --color-danger-text: #991B1B;
+  /* Error text */
+
+  --color-info: #3B82F6;
+  /* Info - blue-500 */
+  --color-info-light: #DBEAFE;
+  /* Info background */
+  --color-info-border: #93C5FD;
+  /* Info border */
+  --color-info-text: #1E40AF;
+  /* Info text */
 
   /* ============================================
    * SPACING SCALE
@@ -132,14 +172,18 @@
   --tracking-wider: 0.05em;
 
   /* ============================================
-   * SHADOWS
+   * SHADOWS (Subtle, like Linear)
    * ============================================ */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm: 0 1px 2px 0 rgb(34 35 38 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(34 35 38 / 0.07), 0 2px 4px -2px rgb(34 35 38 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(34 35 38 / 0.08), 0 4px 6px -4px rgb(34 35 38 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(34 35 38 / 0.08), 0 8px 10px -6px rgb(34 35 38 / 0.05);
+  --shadow-inner: inset 0 2px 4px 0 rgb(34 35 38 / 0.05);
   --shadow-none: 0 0 #0000;
+
+  /* Colored shadows for buttons */
+  --shadow-primary: 0 4px 14px -3px rgb(34 35 38 / 0.3);
+  --shadow-accent: 0 4px 14px -3px rgb(59 130 246 / 0.3);
 
   /* ============================================
    * BORDER RADIUS
@@ -170,6 +214,13 @@
   --transition-slow: 0.3s ease;
 
   /* ============================================
+   * GRADIENTS (Nordic Gray - flat override)
+   * ============================================ */
+  --gradient-brand: var(--color-bg-brand);
+  --gradient-accent: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  --gradient-subtle: linear-gradient(180deg, #F4F5F8 0%, #EDEEF1 100%);
+
+  /* ============================================
    * LAYOUT
    * ============================================ */
   --width-sidebar: 260px;
@@ -178,20 +229,20 @@
 }
 
 /* ============================================
- * DARK MODE (Optional - for future)
+ * DARK MODE (Linear-style)
  * ============================================ */
 [data-theme="dark"] {
-  --color-bg-app: #0f172a;
-  --color-bg-card: #1e293b;
-  --color-bg-elevated: #334155;
-  --color-bg-muted: #1e293b;
-  --color-bg-hover: #334155;
-  --color-bg-active: #475569;
+  --color-bg-app: #1A1B1E;
+  --color-bg-card: #222326;
+  --color-bg-elevated: #2A2B2F;
+  --color-bg-muted: #2A2B2F;
+  --color-bg-hover: #2F3035;
+  --color-bg-active: #36373C;
 
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #cbd5e1;
-  --color-text-muted: #64748b;
+  --color-text-primary: #F4F5F8;
+  --color-text-secondary: #C8CAD0;
+  --color-text-muted: #8A8F98;
 
-  --color-border-default: #334155;
-  --color-border-strong: #475569;
+  --color-border-default: #36373C;
+  --color-border-strong: #45464C;
 }

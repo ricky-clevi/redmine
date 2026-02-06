@@ -10,6 +10,11 @@
  * ============================================ */
 div.issue {
   margin-bottom: var(--space-6);
+  background-color: var(--color-bg-muted) !important;
+  /* Override legacy yellow */
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-default);
 }
 
 /* Subject/Title */
