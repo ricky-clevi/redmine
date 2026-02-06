@@ -55,12 +55,14 @@
   /* ============================================
    * COLOR PALETTE - Borders
    * ============================================ */
-  --color-border-default: #E4E5EA;
-  /* Default borders */
-  --color-border-strong: #D0D2D9;
+  --color-border-default: rgba(0, 0, 0, 0.08);
+  /* Default borders - Glass */
+  --color-border-unique: rgba(0, 0, 0, 0.06);
+  /* Subtle glass border */
+  --color-border-strong: rgba(0, 0, 0, 0.12);
   /* Emphasized borders */
-  --color-border-focus: #222326;
-  /* Focus ring (Nordic Gray) */
+  --color-border-focus: var(--color-accent);
+  /* Focus ring */
 
   /* ============================================
    * COLOR PALETTE - Primary (Nordic Gray)
@@ -77,10 +79,10 @@
   /* ============================================
    * COLOR PALETTE - Accent (Soft Blue for links)
    * ============================================ */
-  --color-accent: #3B82F6;
-  /* Links/interactive - blue-500 */
-  --color-accent-hover: #2563EB;
-  /* Hover state - blue-600 */
+  --color-accent: #5E6AD2;
+  /* Indigo - Linear Brand */
+  --color-accent-hover: #4C56B0;
+  /* Darker Indigo */
   --color-accent-light: #DBEAFE;
   /* Light accent background */
   --color-accent-dark: #1D4ED8;
@@ -142,7 +144,7 @@
   /* ============================================
    * TYPOGRAPHY
    * ============================================ */
-  --font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
   /* Font Sizes */
@@ -172,13 +174,14 @@
   --tracking-wider: 0.05em;
 
   /* ============================================
-   * SHADOWS (Subtle, like Linear)
+   * SHADOWS (Floaty, like Linear)
    * ============================================ */
-  --shadow-sm: 0 1px 2px 0 rgb(34 35 38 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(34 35 38 / 0.07), 0 2px 4px -2px rgb(34 35 38 / 0.05);
-  --shadow-lg: 0 10px 15px -3px rgb(34 35 38 / 0.08), 0 4px 6px -4px rgb(34 35 38 / 0.05);
-  --shadow-xl: 0 20px 25px -5px rgb(34 35 38 / 0.08), 0 8px 10px -6px rgb(34 35 38 / 0.05);
-  --shadow-inner: inset 0 2px 4px 0 rgb(34 35 38 / 0.05);
+  --shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.04), 0px 8px 16px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
   --shadow-none: 0 0 #0000;
 
   /* Colored shadows for buttons */

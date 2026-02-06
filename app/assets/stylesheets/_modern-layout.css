@@ -86,8 +86,12 @@ body {
  * ============================================ */
 #header {
   background: var(--color-primary) !important;
-  padding: 0 !important;
+  padding: var(--space-4) !important;
   border-bottom: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
 }
 
 #header h1 {
@@ -249,12 +253,13 @@ body {
 #sidebar>div,
 #sidebar>form,
 #sidebar>.box {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin-bottom: var(--space-4);
-  box-shadow: var(--shadow-sm);
+  background-color: transparent;
+  /* Linear Spec: Transparent */
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: var(--space-6);
+  box-shadow: none;
 }
 
 #sidebar ul {
@@ -272,15 +277,18 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-2) 0;
+  padding: 4px 8px;
+  /* Linear Spec */
   color: var(--color-text-secondary);
   text-decoration: none;
   font-size: var(--text-sm);
-  transition: color var(--transition-normal);
+  transition: all 0.1s ease;
+  border-radius: 4px;
 }
 
 #sidebar a:hover {
-  color: var(--color-accent);
+  background-color: rgba(0, 0, 0, 0.04);
+  color: var(--color-text-primary);
 }
 
 #sidebar a.selected {

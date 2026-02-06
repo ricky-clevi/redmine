@@ -32,12 +32,15 @@ fieldset,
 .splitcontentright,
 .tab-content,
 #admin-menu,
-#content > .contextual + h2 + .wiki,
-#content > .wiki {
+#content>.contextual+h2+.wiki,
+#content>.wiki {
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-xl);
+  /* technical-reference says --color-bg-surface which is usually same */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  /* --border-subtle */
+  border-radius: 12px;
   box-shadow: var(--shadow-sm);
+  padding: 24px;
 }
 
 fieldset {
@@ -343,11 +346,20 @@ table.list.issues tr.priority-immediate td.priority {
 }
 
 div.issue {
-  background: var(--color-bg-muted) !important;
-  border: 1px solid var(--color-border-default) !important;
-  border-radius: var(--radius-xl) !important;
-  padding: var(--space-6) !important;
+  background: var(--color-bg-card) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  /* --border-subtle */
+  border-radius: 12px !important;
+  padding: 24px !important;
   box-shadow: var(--shadow-sm);
+}
+
+/* Force Remove Yellows */
+div.issue.details,
+.context-menu,
+table.list tr:hover {
+  background-color: #F4F5F8 !important;
+  /* --color-bg-subtle */
 }
 
 div.issue .subject h3 {

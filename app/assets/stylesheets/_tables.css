@@ -30,15 +30,15 @@ table.list {
  * TABLE HEADERS
  * ============================================ */
 table.list thead th {
-    background-color: var(--color-bg-muted);
-    padding: 14px 16px;
+    background-color: transparent;
+    padding: 8px 16px;
     text-align: left;
     font-size: var(--text-xs);
-    font-weight: var(--font-semibold);
+    font-weight: var(--font-bold);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
     color: var(--color-text-muted);
-    border-bottom: 1px solid var(--color-border-default);
+    border-bottom: var(--color-border-default);
     white-space: nowrap;
 }
 
@@ -82,10 +82,16 @@ table.list thead th.sort.desc a::after {
  * TABLE CELLS
  * ============================================ */
 table.list tbody td {
-    padding: 14px 16px;
-    border-bottom: 1px solid var(--color-border-default);
+    padding: 8px 16px;
+    border-bottom: var(--color-border-unique);
+    /* Subtle glass border */
     vertical-align: middle;
     color: var(--color-text-primary);
+    height: 36px;
+}
+
+table.list tr:hover {
+    background-color: var(--color-bg-subtle);
 }
 
 /* ... existing code ... */

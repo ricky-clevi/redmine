@@ -1,248 +1,109 @@
-# Redmine UI Modernization - Technical Reference
+# Linear Design System - Technical Specification
 
-## Project Status: IN PROGRESS
+## Core Design Philosophy
+We are not just "cleaning up" Redmine. We are rebuilding it with a **"Premium Productivity"** aesthetic.
+- **Micro-interactions matter**: Every hover, focus, and click should feel tactile.
+- **Density is key**: Information should be dense but breathing.
+- **Shadows over borders**: Use depth instead of lines to separate content where possible.
+- **Typography is UI**: The font choice and weight carry the structure.
 
-Last Updated: 2026-02-06
+## 1. Design Tokens (The "Premium" Set)
 
-## Design System
+### Colors (Refined Palette)
+| Token | Value | Description |
+|-------|-------|-------------|
+| `--color-bg-base` | `#FAFBFC` | Main app background (slight cool gray) |
+| `--color-bg-surface` | `#FFFFFF` | Cards, sidebars, modals |
+| `--color-bg-subtle` | `#F4F5F8` | Secondary backgrounds, hovers |
+| `--color-text-primary` | `#1C1F26` | Almost black, softer than #000 |
+| `--color-text-secondary` | `#606770` | Muted text |
+| `--color-text-tertiary` | `#8B949E` | Placeholders, meta info |
+| `--color-accent` | `#5E6AD2` | **Indigo** (Linear Brand) or `#3B82F6` (Soft Blue) |
+| `--color-accent-glow` | `rgba(94, 106, 210, 0.2)` | Focus rings |
 
-### Core Colors (Nordic Gray Theme)
+### Borders (Glass-like)
+| Token | Value |
+|-------|-------|
+| `--border-subtle` | `1px solid rgba(0, 0, 0, 0.06)` |
+| `--border-default` | `1px solid rgba(0, 0, 0, 0.08)` |
+| `--border-focus` | `1px solid var(--color-accent)` |
 
+### Shadows (Multi-layered Depth)
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--shadow-xs` | `0px 1px 2px rgba(0,0,0,0.04)` | Buttons, small items |
+| `--shadow-sm` | `0px 2px 4px rgba(0,0,0,0.04), 0px 8px 16px rgba(0,0,0,0.04)` | Cards, dropdowns |
+| `--shadow-md` | `0px 4px 8px rgba(0,0,0,0.04), 0px 16px 32px rgba(0,0,0,0.08)` | Modals, active states |
+
+### Typography (Inter)
+| Token | Value |
+|-------|-------|
+| `--font-stack` | `'Inter', -apple-system, BlinkMacSystemFont, sans-serif` |
+| `--font-weight-regular` | `400` |
+| `--font-weight-medium` | `500` |
+| `--font-weight-semibold` | `600` |
+
+---
+
+## 2. Component Blueprints
+
+### Buttons (`.button`, `input[type=submit]`)
+**Visuals**:
+- Height: 28px (Small) or 32px (Medium)
+- Radius: `6px`
+- Background: `linear-gradient(to bottom, #FFFFFF, #F9F9FB)` (Subtle gradient)
+- Border: `1px solid rgba(0,0,0,0.1)`
+- Shadow: `--shadow-xs`
+- Font: 13px Medium
+
+**Interaction**:
+- Hover: Background `#F4F5F8`, Border color darker
+- Active: `transform: scale(0.98)` (Tactile click)
+
+### Inputs (`input[type=text]`, `select`)
+**Visuals**:
+- Background: `#FFFFFF`
+- Border: `1px solid rgba(0,0,0,0.1)` (or no border with internal shadow)
+- Radius: `6px`
+- Padding: 6px 10px
+
+**Interaction**:
+- Focus: `box-shadow: 0 0 0 3px var(--color-accent-glow)` + `border-color: var(--color-accent)`
+- Transition: `all 0.15s ease`
+
+### Tables (`table.list`)
+**Visuals**:
+- Header: Background `transparent`, Border-bottom `--border-default`, Text uppercase/small/bold.
+- Row: Height 36px/40px.
+- Cell: Padding `8px 16px`, Border-bottom `--border-subtle`.
+- Hover: Background `--color-bg-subtle` (very light gray).
+
+### Sidebar (`#sidebar`)
+**Visuals**:
+- Background: Transparent (blends with page) or very faint gray.
+- Links: Radius `4px`, Padding `4px 8px`.
+- Active Link: Background `rgba(0,0,0,0.04)`, Text Primary.
+
+---
+
+## 3. Known Legacy Fixes (Reference)
+
+### Force Remove Yellows
 ```css
-/* Primary - Used for header, buttons, dark UI elements */
---color-primary: #222326;  /* Nordic Gray */
-
-/* Accent - Used for links, focus rings, interactive elements */
---color-accent: #3B82F6;   /* Soft Blue */
-
-/* Backgrounds */
---color-bg-primary: #F4F5F8;   /* Mercury White - main page bg */
---color-bg-card: #FFFFFF;       /* Cards, sidebars, modal bg */
---color-bg-muted: #F4F5F8;      /* Issue details, subtle sections */
---color-bg-hover: var(--oc-gray-1); /* ~#f1f3f5 - hover states */
-```
-
-### Legacy Colors to Avoid
-
-These colors appear in legacy CSS and should be replaced:
-| Legacy Color | Problem | Replacement |
-|--------------|---------|-------------|
-| `--oc-yellow-0` | Yellow highlight | `--color-bg-muted` |
-| `--oc-orange-0/1` | Orange accents | `--color-bg-card` |
-| Hard-coded `#fbebc8` | Yellow tint | `var(--oc-gray-0)` |
-
-## CSS Architecture
-
-### Import Order (application.css)
-```css
-/* 1. Foundation */
-@import url('open-color.css');
-@import url('_design-tokens.css');
-@import url('_modern-reset.css');
-
-/* 2. Layout */
-@import url('_modern-layout.css');
-@import url('_modern-typography.css');
-
-/* 3. Components */
-@import url('_tables.css');
-@import url('_forms.css');
-@import url('_issues.css');
-/* ... other component files ... */
-
-/* 4. Legacy (for compatibility) */
-@import url('_legacy-base.css');
-
-/* 5. Final Overrides (MUST be last) */
-@import url('_overrides.css');
-```
-
-### Key Files and Their Purpose
-
-| File | Purpose | When to Edit |
-|------|---------|--------------|
-| `_design-tokens.css` | CSS custom properties | Adding new design tokens |
-| `_modern-layout.css` | Header, sidebar, footer | Structural layout changes |
-| `_forms.css` | Inputs, buttons, form layout | Form element styling |
-| `_tables.css` | Data tables | Table appearance |
-| `_issues.css` | Issue list, detail, journals | Issue-specific UI |
-| `_legacy-base.css` | Legacy Redmine styles | Fixing old yellow/orange |
-| `_overrides.css` | Emergency overrides | Last resort with !important |
-
-## Known Issues & Fixes
-
-### Issue: Yellow Background on Issue Detail
-**Location**: `_legacy-base.css` line ~1867
-**Selector**: `div.issue`
-**Fix**:
-```css
-div.issue {
-  background: var(--color-bg-muted, var(--oc-gray-0));
-  border-radius: 8px;
-  border: 1px solid var(--color-border-default);
+/* Nuke all yellow backgrounds */
+div.issue, .context-menu, table.list tr:hover {
+  background-color: var(--color-bg-subtle) !important;
 }
 ```
 
-### Issue: Orange Login Form Background
-**Location**: `_legacy-base.css` line ~504
-**Selector**: `#login-form`
-**Fix**:
+### Force Card Reset
 ```css
-#login-form {
-  background-color: var(--color-bg-card, var(--oc-white));
+/* Reset basic boxes to Premium Cards */
+.box, fieldset {
+  background: var(--color-bg-surface);
+  border: var(--border-subtle);
   border-radius: 12px;
-  border: 1px solid var(--color-border-default);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-```
-
-### Issue: Yellow Table Row Hover
-**Location**: `_legacy-base.css` line ~579
-**Selector**: `table.list tbody tr:hover`
-**Fix**:
-```css
-table.list:not(.odd-even) tbody tr:nth-child(odd):hover,
-table.list:not(.odd-even) tbody tr:nth-child(even):hover {
-  background-color: var(--color-bg-hover, var(--oc-gray-1));
-}
-```
-
-## Asset Pipeline Notes
-
-### Propshaft (Rails 8.1+)
-- Assets are fingerprinted based on content hash
-- URL format: `/assets/filename-{hash}.css`
-- **Cache Issue**: If CSS changes don't appear, server restart may be needed
-- No public/assets directory in development (served dynamically)
-
-### Debugging CSS
-```javascript
-// Check computed style in browser console
-getComputedStyle(document.querySelector('div.issue')).backgroundColor
-
-// Expected: "rgb(244, 245, 248)" for --color-bg-muted
-// Problem: "rgb(255, 249, 219)" is yellow (legacy)
-```
-
-## Component Patterns
-
-### Cards/Panels
-```css
-.card, .box, .splitcontent {
-  background: var(--color-bg-card);
-  border-radius: 12px;
-  border: 1px solid var(--color-border-default);
   box-shadow: var(--shadow-sm);
-  padding: 16px;
+  padding: 24px;
 }
 ```
-
-### Buttons
-```css
-/* Primary button */
-.button, input[type="submit"] {
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 16px;
-  cursor: pointer;
-}
-
-/* Hover state */
-.button:hover {
-  background-color: var(--oc-gray-8);
-}
-```
-
-### Form Inputs
-```css
-input[type="text"], textarea, select {
-  border: 1px solid var(--color-border-default);
-  border-radius: 8px;
-  padding: 8px 12px;
-  transition: border-color 150ms;
-}
-
-input:focus, textarea:focus, select:focus {
-  border-color: var(--color-accent);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-```
-
-### Tables
-```css
-table.list {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-table.list th {
-  background: var(--oc-gray-1);
-  font-weight: 600;
-  text-align: left;
-  padding: 12px;
-}
-
-table.list td {
-  padding: 12px;
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-```
-
-## Pages Verified
-
-### Confirmed Working
-- Login page (card styling)
-- Home page (header, nav)
-- Projects list
-- Issues list
-- Issue detail (fix applied, cache pending)
-- New issue form
-- Admin dashboard
-- Admin settings
-- User management
-- Groups
-- Roles and Permissions
-- System info
-- Trackers
-- Issue statuses
-- Enumerations
-- My Account
-- Search results
-- Gantt chart
-- Calendar
-- Time entries
-- Reports
-- Documents
-- Roadmap
-- Wiki
-- Forums
-
-### Need Server Restart
-- Issue detail yellow bg
-- Login form orange bg
-- Table row yellow hover
-
-## Remaining Work
-
-### High Priority
-1. Status badges (colored dots for New/In Progress/Closed)
-2. Progress bar styling
-3. Flash messages styling
-4. Tooltip styling
-5. Pagination styling
-
-### Medium Priority
-6. Modal dialogs
-7. Autocomplete dropdowns
-8. Date picker calendar
-9. File upload area
-10. Diff view styling
-
-### Lower Priority
-11. Print styles
-12. Mobile responsiveness
-13. Accessibility improvements
-14. Dark mode (future)
