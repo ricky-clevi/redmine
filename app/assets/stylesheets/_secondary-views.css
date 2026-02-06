@@ -1062,3 +1062,23 @@ div[id^="tab-content-"] {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* ============================================
+ * MY ACCOUNT OVERRIDES
+ * ============================================ */
+.controller-my.action-account .box {
+  background: white !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--color-border-default) !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+.controller-my.action-account .tabular p {
+  padding: 12px 0;
+}
+
+.controller-my.action-account .tabular label {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}

@@ -425,68 +425,44 @@ p.buttons {
  * LOGIN FORM OVERRIDES
  * Fix legacy peach/orange background
  * ============================================ */
-#login-form,
-.login-box,
-body.controller-account #content form,
-body.controller-account #content>div {
-  background-color: var(--color-bg-card) !important;
-  background: var(--color-bg-card) !important;
-  border: 1px solid var(--color-border-default) !important;
-  border-radius: var(--radius-xl) !important;
-  padding: var(--space-6) !important;
-  box-shadow: var(--shadow-lg) !important;
+#login-form {
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  padding: 32px !important;
   max-width: 400px !important;
-  margin: var(--space-8) auto !important;
+  margin: 80px auto !important;
 }
 
-body.controller-account #content {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Force vertical label layout on login/register forms */
-body.controller-account .tabular p,
-body.controller-account form p {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-  margin-bottom: var(--space-4) !important;
-}
-
-body.controller-account .tabular label,
-body.controller-account form label {
-  float: none !important;
-  width: auto !important;
-  text-align: left !important;
-  margin-bottom: var(--space-2) !important;
-  font-weight: var(--font-medium) !important;
-  color: var(--color-text-primary) !important;
-}
-
-body.controller-account input[type="text"],
-body.controller-account input[type="password"] {
+#login-form input[type="text"],
+#login-form input[type="password"] {
   width: 100% !important;
-  margin-left: 0 !important;
+  padding: 12px 16px !important;
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  margin-bottom: 16px !important;
 }
 
-body.controller-account input[type="submit"],
-body.controller-account button[type="submit"] {
+#login-form input:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+  outline: none !important;
+}
+
+#login-form input[type="submit"] {
   width: 100% !important;
-  margin-top: var(--space-4) !important;
-  padding: var(--space-3) var(--space-4) !important;
-  background: var(--gradient-brand) !important;
-  color: var(--color-text-inverse) !important;
+  padding: 12px !important;
+  background: var(--color-primary) !important;
+  color: white !important;
   border: none !important;
-  border-radius: var(--radius-lg) !important;
-  font-size: var(--text-base) !important;
-  font-weight: var(--font-semibold) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
   cursor: pointer !important;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal) !important;
+  transition: background 150ms !important;
+  margin-top: 0 !important;
 }
 
-body.controller-account input[type="submit"]:hover,
-body.controller-account button[type="submit"]:hover {
-  transform: translateY(-1px) !important;
-  box-shadow: var(--shadow-primary) !important;
+#login-form input[type="submit"]:hover {
+  background: var(--oc-gray-8) !important;
 }

@@ -36,14 +36,9 @@ body {
  * Account links, login/logout
  * ============================================ */
 #top-menu {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: 32px;
-  padding: 0 var(--space-6);
-  background: var(--color-bg-brand-dark);
-  font-size: var(--text-xs);
-  color: var(--color-text-inverse);
+  background: transparent !important;
+  padding: 8px 16px !important;
+  height: auto !important;
 }
 
 #top-menu ul {
@@ -61,11 +56,13 @@ body {
 }
 
 #top-menu a {
-  color: rgb(255 255 255 / 0.8);
-  text-decoration: none;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-sm);
-  transition: color var(--transition-normal), background-color var(--transition-normal);
+  color: rgba(255, 255, 255, 0.8) !important;
+  text-decoration: none !important;
+  padding: 4px 8px !important;
+}
+
+#top-menu a:hover {
+  color: white !important;
 }
 
 #top-menu a:hover {
@@ -88,12 +85,9 @@ body {
  * Project name, main navigation, search
  * ============================================ */
 #header {
-  background: #222326 !important;
-  background-image: none !important;
-  color: var(--color-text-inverse);
-  padding: var(--space-4) var(--space-6);
-  position: relative;
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  background: var(--color-primary) !important;
+  padding: 0 !important;
+  border-bottom: none !important;
 }
 
 #header h1 {
@@ -126,34 +120,21 @@ body {
  * MAIN MENU (Navigation Tabs)
  * ============================================ */
 #main-menu {
-  margin-top: var(--space-3);
-}
-
-#main-menu ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-#main-menu li {
-  margin: 0;
-  padding: 0;
+  background: var(--color-primary) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin-top: 0 !important;
 }
 
 #main-menu li a {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: rgb(255 255 255 / 0.8);
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 12px 16px !important;
+  display: block !important;
+}
+
+#main-menu li a:hover,
+#main-menu li a.selected {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #main-menu li a:hover {
@@ -194,25 +175,16 @@ body {
   min-width: 150px;
 }
 
-#quick-search input[type="text"] {
-  width: 180px;
-  padding: var(--space-2) var(--space-3);
-  font-size: var(--text-sm);
-  background-color: rgb(255 255 255 / 0.1);
-  border: 1px solid rgb(255 255 255 / 0.2);
-  border-radius: var(--radius-md);
-  color: #ffffff;
-  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+#quick-search input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 6px !important;
+  color: white !important;
+  padding: 6px 12px !important;
 }
 
-#quick-search input[type="text"]::placeholder {
-  color: rgb(255 255 255 / 0.5);
-}
-
-#quick-search input[type="text"]:focus {
-  outline: none;
-  background-color: rgb(255 255 255 / 0.15);
-  border-color: rgb(255 255 255 / 0.4);
+#quick-search input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
 /* ============================================
