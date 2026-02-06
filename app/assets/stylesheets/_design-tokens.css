@@ -142,7 +142,7 @@
   /* ============================================
    * TYPOGRAPHY
    * ============================================ */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-family: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
 
   /* Font Sizes */
@@ -226,6 +226,65 @@
   --width-sidebar: 260px;
   --width-content-max: 1400px;
   --header-height: 100px;
+
+  /* ============================================
+   * COMPATIBILITY ALIASES (legacy modern CSS refs)
+   * ============================================ */
+  --font-sans: var(--font-family);
+
+  --color-bg-primary: var(--color-bg-app);
+  --color-bg-secondary: var(--color-bg-card);
+  --color-border-subtle: var(--color-border-default);
+  --color-text-link: var(--color-accent);
+  --color-text-link-hover: var(--color-accent-hover);
+  --color-bg-selected: var(--color-accent-light);
+
+  --color-neutral-0: #ffffff;
+  --color-neutral-200: #E4E5EA;
+  --color-neutral-400: #B0B5BD;
+  --color-neutral-500: #8A8F98;
+
+  --color-primary-50: #F4F5F8;
+  --color-primary-300: #B0B5BD;
+  --color-primary-500: #36373C;
+  --color-primary-600: #222326;
+  --color-primary-700: #18191B;
+  --color-primary-800: #121316;
+
+  --color-success-50: #F0FDF4;
+  --color-success-100: #DCFCE7;
+  --color-success-500: #22C55E;
+  --color-success-600: #16A34A;
+  --color-success-700: #15803D;
+
+  --color-warning-50: #FFFBEB;
+  --color-warning-100: #FEF3C7;
+  --color-warning-500: #F59E0B;
+  --color-warning-600: #D97706;
+  --color-warning-700: #B45309;
+  --color-warning-800: #92400E;
+
+  --color-danger-50: #FEF2F2;
+  --color-danger-100: #FEE2E2;
+  --color-danger-500: #EF4444;
+  --color-danger-600: #DC2626;
+  --color-danger-700: #B91C1C;
+
+  --height-input-sm: 32px;
+  --height-input-md: 36px;
+  --height-input-lg: 42px;
+
+  --space-0-5: 2px;
+  --space-1-5: 6px;
+  --space-9: 36px;
+
+  --transition-colors: color var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+  --transition-shadow: box-shadow var(--transition-normal);
+  --transition-transform: transform var(--transition-normal);
+  --transition-all: all var(--transition-normal);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-focus-ring: 0 0 0 3px rgb(59 130 246 / 0.18);
 }
 
 /* ============================================

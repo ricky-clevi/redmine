@@ -1,50 +1,671 @@
 /**
- * Redmine Modern UI - Theme Overrides
- * Complete UI Renewal - Phase 3
- * 
- * This file MUST be loaded LAST to override legacy styles.
+ * Redmine Modern UI - Final Overrides
+ * Loaded last to neutralize legacy visuals and enforce Nordic Gray system.
  */
 
 /* ============================================
- * ISSUE DETAIL VIEW
- * Overrides legacy yellow background
+ * GLOBAL SURFACE AND TYPOGRAPHY
  * ============================================ */
-div.issue {
-    background-color: var(--color-bg-muted) !important;
-    padding: var(--space-5) !important;
-    border-radius: var(--radius-lg) !important;
-    border: 1px solid var(--color-border-default) !important;
+
+html,
+body {
+  background: var(--color-bg-app);
+  color: var(--color-text-primary);
+}
+
+#wrapper {
+  background: var(--color-bg-app);
+}
+
+#content {
+  max-inline-size: var(--width-content-max);
+  margin-inline: auto;
+}
+
+#main {
+  background: var(--color-bg-app);
+}
+
+.box,
+fieldset,
+.splitcontentleft,
+.splitcontentright,
+.tab-content,
+#admin-menu,
+#content > .contextual + h2 + .wiki,
+#content > .wiki {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+fieldset {
+  padding: var(--space-4);
+  margin-block-end: var(--space-4);
+}
+
+legend {
+  padding-inline: var(--space-2);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-semibold);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-primary);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
 }
 
 /* ============================================
- * LOGIN FORM
- * Override legacy orange/peach background
+ * HEADER / TOP MENU / MAIN NAV
  * ============================================ */
+
+#top-menu {
+  background: var(--color-primary-800) !important;
+  border-bottom: 1px solid rgb(255 255 255 / 0.08);
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#top-menu ul {
+  display: flex;
+  align-items: center;
+}
+
+#top-menu a {
+  color: rgb(255 255 255 / 0.78) !important;
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-1) var(--space-2);
+}
+
+#top-menu a:hover {
+  color: var(--color-neutral-0) !important;
+  background: rgb(255 255 255 / 0.08);
+  text-decoration: none;
+}
+
+#top-menu #loggedas {
+  color: rgb(255 255 255 / 0.62) !important;
+}
+
+#header {
+  background: var(--color-primary-700) !important;
+  background-image: none !important;
+  box-shadow: var(--shadow-md);
+}
+
+#header h1,
+#header a,
+#main-menu li a {
+  color: var(--color-neutral-0) !important;
+}
+
+#main-menu li a {
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font-weight: var(--font-medium);
+}
+
+#main-menu li a:hover {
+  background: rgb(255 255 255 / 0.08);
+  border-bottom-color: rgb(255 255 255 / 0.48);
+}
+
+#main-menu li a.selected,
+#main-menu li a.selected:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-bottom-color: var(--color-neutral-0);
+}
+
+#quick-search #q {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgb(255 255 255 / 0.28);
+  background: rgb(255 255 255 / 0.14);
+  color: var(--color-neutral-0);
+}
+
+#quick-search #q::placeholder {
+  color: rgb(255 255 255 / 0.58);
+}
+
+#quick-search #q:focus {
+  border-color: rgb(255 255 255 / 0.6);
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* ============================================
+ * BUTTONS AND INPUTS
+ * ============================================ */
+
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.button,
+a.button,
+a.icon.icon-add,
+a.icon.icon-edit {
+  border-radius: var(--radius-lg);
+}
+
+input[type="submit"],
+button[type="submit"],
+.button-positive {
+  background: var(--color-primary-600) !important;
+  border: 1px solid var(--color-primary-600) !important;
+  color: var(--color-neutral-0) !important;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.button-positive:hover {
+  background: var(--color-primary-500) !important;
+  border-color: var(--color-primary-500) !important;
+}
+
+input[type="button"],
+input[type="reset"],
+.button-small {
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-default);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-focus-ring);
+  outline: none;
+}
+
+label {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-medium);
+}
+
+/* ============================================
+ * LOGIN PAGE
+ * ============================================ */
+
+body.controller-account.action-login #main,
+body.controller-account.action-register #main {
+  display: block;
+}
+
 #login-form {
-    background-color: var(--color-bg-card) !important;
-    border: 1px solid var(--color-border-default) !important;
+  background: var(--color-bg-card) !important;
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: var(--radius-2xl) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: var(--space-8) !important;
+  max-inline-size: 440px;
+  margin: 80px auto !important;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+  width: 100%;
+  min-height: 42px;
+}
+
+#login-form input[type="submit"] {
+  width: 100%;
+  min-height: 42px;
+}
+
+.lost_password a {
+  color: var(--color-accent) !important;
 }
 
 /* ============================================
- * TABLE ROW HOVER
- * Override legacy yellow hover
+ * TABLES (PROJECTS, ISSUES, USERS, GROUPS, ROLES)
  * ============================================ */
+
+table.list {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+table.list thead th {
+  background: var(--color-bg-muted) !important;
+  color: var(--color-text-secondary) !important;
+  font-weight: var(--font-semibold);
+}
+
+table.list tbody td {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+table.list tbody tr:hover,
 table.list:not(.odd-even) tbody tr:nth-child(odd):hover,
 table.list:not(.odd-even) tbody tr:nth-child(even):hover,
 .odd:hover,
 .even:hover {
-    background-color: var(--color-bg-hover) !important;
+  background: var(--color-bg-hover) !important;
+}
+
+table.list.projects .name a,
+table.list.users .name a,
+table.list.groups .name a,
+table.list.trackers .name a,
+table.list.issue_statuses .name a {
+  color: var(--color-accent);
+  font-weight: var(--font-semibold);
+}
+
+.pagination ul.pages li a,
+.pagination .page {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  padding: 4px 10px;
+}
+
+.pagination ul.pages li.current,
+.pagination .current {
+  background: var(--color-primary-600);
+  color: var(--color-neutral-0);
+  border-radius: var(--radius-full);
 }
 
 /* ============================================
- * HEADER
- * Override legacy gradient
+ * ISSUE LIST AND ISSUE DETAIL
  * ============================================ */
-#header {
-    background: var(--color-bg-brand) !important;
-    background-image: none !important;
+
+fieldset#filters {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
 }
 
-#top-menu {
-    background: #1a1a1c !important;
+table.list.issues td.status {
+  position: relative;
+  padding-inline-start: 24px;
+}
+
+table.list.issues td.status::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 10px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-info);
+}
+
+table.list.issues tr.closed td.status::before {
+  background: var(--color-neutral-500);
+}
+
+table.list.issues tr.priority-high td.priority {
+  color: var(--color-warning-700);
+  font-weight: var(--font-semibold);
+}
+
+table.list.issues tr.priority-urgent td.priority,
+table.list.issues tr.priority-immediate td.priority {
+  color: var(--color-danger-700);
+  font-weight: var(--font-bold);
+}
+
+div.issue {
+  background: var(--color-bg-muted) !important;
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: var(--radius-xl) !important;
+  padding: var(--space-6) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+div.issue .subject h3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
+}
+
+div.issue .attributes {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+#history .journal {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+#update .box {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-default);
+}
+
+.progress {
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-200) !important;
+  overflow: hidden;
+}
+
+.progress .closed,
+.progress .done,
+.progress .bar {
+  border-radius: var(--radius-full);
+}
+
+/* ============================================
+ * FORMS (NEW ISSUE, SETTINGS, ACCOUNT)
+ * ============================================ */
+
+form#issue-form .box,
+form#new_project .box,
+.controller-my.action-account .tabular,
+.controller-settings .tabular {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+}
+
+.tabular p {
+  margin-bottom: var(--space-4);
+}
+
+.tabular label {
+  color: var(--color-text-secondary);
+}
+
+.jstElements {
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border-default);
+  border-bottom: none;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: var(--space-2);
+}
+
+.jstElements button {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+}
+
+.jstElements button:hover {
+  background: var(--color-bg-hover);
+}
+
+/* ============================================
+ * ADMIN PAGES (ADMIN, SETTINGS, USERS, GROUPS, ROLES)
+ * ============================================ */
+
+#admin-menu {
+  padding: var(--space-2);
+}
+
+#admin-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#admin-menu li {
+  margin-bottom: 2px;
+}
+
+#admin-menu a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+}
+
+#admin-menu a:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+#admin-menu .selected a,
+#admin-menu a.selected {
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+  font-weight: var(--font-semibold);
+}
+
+.tabs {
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.tabs a {
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+}
+
+.tabs a.selected {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ============================================
+ * SEARCH PAGE
+ * ============================================ */
+
+#search-form fieldset {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+}
+
+#search-results dt {
+  margin-top: var(--space-4);
+  font-weight: var(--font-semibold);
+}
+
+#search-results dd {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+}
+
+/* ============================================
+ * CALENDAR, GANTT, ROADMAP, REPORTS, TIME
+ * ============================================ */
+
+table.cal {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+table.cal thead th {
+  background: var(--color-bg-muted);
+  color: var(--color-text-secondary);
+}
+
+table.cal td {
+  min-height: 90px;
+  border: 1px solid var(--color-border-default);
+}
+
+table.cal td.today {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  background: rgb(219 234 254 / 0.45);
+}
+
+.gantt_hdr,
+.gantt_subjects {
+  background: var(--color-bg-card);
+}
+
+.gantt_hdr,
+.gantt_subjects,
+.gantt_lines {
+  border-color: var(--color-border-default);
+}
+
+#roadmap .version {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.report td.total,
+.report tr.total td,
+table.list.time-entries tfoot td {
+  font-weight: var(--font-bold);
+  background: var(--color-bg-muted);
+}
+
+/* ============================================
+ * DOCUMENTS, WIKI, FORUMS
+ * ============================================ */
+
+.wiki {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+}
+
+.wiki pre,
+.wiki code {
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+}
+
+.wiki table {
+  border-collapse: collapse;
+}
+
+.wiki th,
+.wiki td {
+  border: 1px solid var(--color-border-default);
+  padding: var(--space-2) var(--space-3);
+}
+
+.wiki th {
+  background: var(--color-bg-muted);
+}
+
+.boards.board table.list td.subject a,
+.forums table.list td.name a {
+  font-weight: var(--font-semibold);
+}
+
+.documents .document,
+#documents .document {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+/* ============================================
+ * FLASH, TOOLTIP, CONTEXT MENU
+ * ============================================ */
+
+#flash_notice,
+.flash.notice {
+  background: var(--color-success-light);
+  border-color: var(--color-success-border);
+  color: var(--color-success-text);
+}
+
+#flash_warning,
+.flash.warning {
+  background: var(--color-warning-light);
+  border-color: var(--color-warning-border);
+  color: var(--color-warning-text);
+}
+
+#flash_error,
+.flash.error {
+  background: var(--color-danger-light);
+  border-color: var(--color-danger-border);
+  color: var(--color-danger-text);
+}
+
+.tooltip:hover span.tip {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-default);
+  box-shadow: var(--shadow-lg);
+}
+
+#context-menu {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-bg-card);
+}
+
+#context-menu li a:hover {
+  background: var(--color-bg-hover);
+}
+
+/* ============================================
+ * RESPONSIVE
+ * ============================================ */
+
+@media (max-width: 1024px) {
+  #main {
+    display: block;
+  }
+
+  #sidebar {
+    width: auto;
+    border-inline-start: none;
+    border-top: 1px solid var(--color-border-default);
+  }
+
+  #content {
+    max-inline-size: 100%;
+    padding: var(--space-4);
+  }
+
+  #login-form {
+    margin: 24px auto !important;
+    padding: var(--space-5) !important;
+  }
 }
