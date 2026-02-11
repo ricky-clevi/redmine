@@ -220,9 +220,17 @@ label {
  * ============================================ */
 
 body.controller-account.action-login #main,
-body.controller-account.action-register #main {
-  display: block;
+body.controller-account.act#list-top,
+#list-left,
+#list-right {
+  display: block !important;
 }
+
+#list-top {
+  grid-column: 1 / -1 !important;
+  width: 100%;
+}
+
 
 #login-form {
   background: var(--color-bg-card) !important;

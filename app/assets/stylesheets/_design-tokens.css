@@ -201,13 +201,13 @@
   /* ============================================
    * Z-INDEX SCALE
    * ============================================ */
-  --z-dropdown: 100;
+  --z-dropdown: 1000;
   --z-sticky: 200;
   --z-fixed: 300;
   --z-modal-backdrop: 400;
   --z-modal: 500;
-  --z-popover: 600;
-  --z-tooltip: 700;
+  --z-popover: 2000;
+  --z-tooltip: 2100;
 
   /* ============================================
    * TRANSITIONS
@@ -227,8 +227,10 @@
    * LAYOUT
    * ============================================ */
   --width-sidebar: 260px;
-  --width-content-max: 1400px;
+  --width-content-max: 1800px;
+  /* Increased from 1400px to fill screen */
   --header-height: 100px;
+
 
   /* ============================================
    * COMPATIBILITY ALIASES (legacy modern CSS refs)
