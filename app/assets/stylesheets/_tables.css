@@ -31,14 +31,14 @@ table.list {
  * ============================================ */
 table.list thead th {
     background-color: transparent;
-    padding: 8px 16px;
+    padding: 6px 12px;
     text-align: left;
     font-size: var(--text-xs);
-    font-weight: var(--font-bold);
+    font-weight: var(--font-semibold);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
     color: var(--color-text-muted);
-    border-bottom: var(--color-border-default);
+    border-bottom: 1px solid var(--color-border-default);
     white-space: nowrap;
 }
 
@@ -82,19 +82,43 @@ table.list thead th.sort.desc a::after {
  * TABLE CELLS
  * ============================================ */
 table.list tbody td {
-    padding: 8px 16px;
-    border-bottom: var(--color-border-unique);
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--color-border-unique);
     /* Subtle glass border */
     vertical-align: middle;
     color: var(--color-text-primary);
-    height: 36px;
+    height: 34px;
 }
 
-table.list tr:hover {
-    background-color: var(--color-bg-subtle);
+table.list tbody tr {
+    transition: background-color 80ms ease;
 }
 
-/* ... existing code ... */
+table.list tbody tr:hover {
+    background-color: var(--color-bg-hover);
+}
+
+/* Hover-reveal: show action links only on row hover */
+table.list tbody td .row-actions {
+    opacity: 0;
+    transition: opacity 100ms ease;
+}
+
+table.list tbody tr:hover td .row-actions {
+    opacity: 1;
+}
+
+/* Float-right action links fade in on hover */
+table.list tbody td a.icon-edit,
+table.list tbody td a.icon-del {
+    opacity: 0;
+    transition: opacity 100ms ease;
+}
+
+table.list tbody tr:hover td a.icon-edit,
+table.list tbody tr:hover td a.icon-del {
+    opacity: 1;
+}
 
 /* Status badges using dots */
 table.issues td.status {

@@ -74,15 +74,15 @@ input[type="submit"] {
   background: var(--color-primary-600) !important;
   color: var(--color-neutral-0) !important;
   border: none !important;
-  height: 40px !important;
-  padding: 0 20px !important;
-  border-radius: var(--radius-lg) !important;
+  height: 32px !important;
+  padding: 0 16px !important;
+  border-radius: 6px !important;
   font-weight: var(--font-medium) !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: background 0.15s !important;
+  transition: background 0.15s, transform 100ms ease-out !important;
 }
 
 .btn--primary:hover,

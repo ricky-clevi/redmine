@@ -19,8 +19,8 @@
   /* ============================================
    * COLOR PALETTE - Backgrounds
    * ============================================ */
-  --color-bg-app: #F4F5F8;
-  /* Mercury White - main background */
+  --color-bg-app: #FAFBFC;
+  /* Linear Base - clean white-gray */
   --color-bg-card: #ffffff;
   /* Cards, panels, content areas */
   --color-bg-elevated: #ffffff;
@@ -31,6 +31,8 @@
   /* Row/item hover states */
   --color-bg-active: #E4E5EA;
   /* Active/pressed states */
+  --color-bg-tertiary: #EDEEF1;
+  /* Code blocks, file viewers, tertiary surfaces */
   --color-bg-brand: #222326;
   /* Primary brand (Nordic Gray) */
   --color-bg-brand-hover: #36373C;
@@ -41,10 +43,10 @@
   /* ============================================
    * COLOR PALETTE - Text
    * ============================================ */
-  --color-text-primary: #222326;
-  /* Nordic Gray - main text */
-  --color-text-secondary: #4A4D55;
-  /* Secondary text */
+  --color-text-primary: #1C1F26;
+  /* Almost Black - Premium primary text */
+  --color-text-secondary: #8B949E;
+  /* Cool Gray - secondary/muted text */
   --color-text-muted: #8A8F98;
   /* Oslo Gray - muted text */
   --color-text-tertiary: #B0B5BD;
@@ -168,7 +170,7 @@
   --leading-relaxed: 1.625;
 
   /* Letter Spacing */
-  --tracking-tight: -0.025em;
+  --tracking-tight: -0.01em;
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
@@ -226,10 +228,9 @@
   /* ============================================
    * LAYOUT
    * ============================================ */
-  --width-sidebar: 260px;
+  --width-sidebar: 216px;
   --width-content-max: 1800px;
-  /* Increased from 1400px to fill screen */
-  --header-height: 100px;
+  --header-height: 48px;
 
 
   /* ============================================

@@ -13,17 +13,45 @@ body {
   color: var(--color-text-primary);
 }
 
+/* Force Inter over legacy Noto Sans from _legacy-base.css */
+html, body, h1, h2, h3, h4, h5, h6,
+input, button, select, textarea, label {
+  font-family: var(--font-family) !important;
+}
+
 #wrapper {
   background: var(--color-bg-app);
+  overflow: visible;
+  /* Override legacy overflow:hidden to prevent dropdown clipping */
 }
 
+/* Open layout: content is transparent, inner sections are cards */
 #content {
-  max-inline-size: var(--width-content-max);
-  margin-inline: auto;
+  max-inline-size: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  order: 1 !important;
 }
 
+/* Force flex layout over legacy float-based layout */
 #main {
-  background: var(--color-bg-app);
+  background: var(--color-bg-app) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  padding: 24px 28px !important;
+  gap: 20px !important;
+}
+
+/* Sidebar stays on the LEFT */
+#sidebar {
+  order: 0 !important;
+  flex-shrink: 0 !important;
+  width: 216px !important;
 }
 
 .box,
@@ -73,82 +101,169 @@ a:hover {
 
 /* ============================================
  * HEADER / TOP MENU / MAIN NAV
+ * Unified dark chrome — single cohesive dark zone, no splits
  * ============================================ */
 
+/* Utility bar — account/admin links at top */
 #top-menu {
-  background: var(--color-primary-800) !important;
-  border-bottom: 1px solid rgb(255 255 255 / 0.08);
-  min-height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  background: #1A1B1E !important;
+  min-height: 28px !important;
+  height: 28px !important;
+  padding: 0 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
 }
 
 #top-menu ul {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
+  height: 28px !important;
+  gap: 0 !important;
 }
 
 #top-menu a {
-  color: rgb(255 255 255 / 0.78) !important;
-  font-weight: var(--font-medium);
-  border-radius: var(--radius-md);
-  padding: var(--space-1) var(--space-2);
+  color: rgba(255, 255, 255, 0.45) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  letter-spacing: 0 !important;
+  transition: color 0.1s ease, background 0.1s ease !important;
 }
 
 #top-menu a:hover {
-  color: var(--color-neutral-0) !important;
-  background: rgb(255 255 255 / 0.08);
-  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  text-decoration: none !important;
 }
 
 #top-menu #loggedas {
-  color: rgb(255 255 255 / 0.62) !important;
+  color: rgba(255, 255, 255, 0.25) !important;
+  font-size: 11px !important;
+  padding: 0 8px !important;
 }
 
+/* Main header — project name + search — DARK to unify with utility bar */
 #header {
-  background: var(--color-primary-700) !important;
+  background: #222326 !important;
   background-image: none !important;
-  box-shadow: var(--shadow-md);
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding: 0 20px !important;
+  min-height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--space-4) !important;
 }
 
-#header h1,
-#header a,
-#main-menu li a {
-  color: var(--color-neutral-0) !important;
+#header h1 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  color: #ffffff !important;
+}
+
+#header h1 a,
+#header a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: none !important;
+}
+
+#header h1 a:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+#header .description {
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+  margin-top: 2px !important;
+}
+
+/* Search input — on dark header background */
+#quick-search #q,
+#quick-search input[type="text"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 20px !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  padding: 5px 14px !important;
+  min-width: 180px !important;
+  transition: all 0.15s ease !important;
+}
+
+#quick-search #q::placeholder,
+#quick-search input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+#quick-search #q:focus,
+#quick-search input[type="text"]:focus {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+#quick-search label,
+#quick-search label a {
+  color: rgba(255, 255, 255, 0.45) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+}
+
+/* Project jump select */
+#quick-search #project_quick_jump_box {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+}
+
+/* Navigation tabs — DARK background, accent underline for selected */
+#main-menu {
+  background: #222326 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  margin-top: 0 !important;
+  padding: 0 16px !important;
+}
+
+#main-menu ul {
+  display: flex !important;
+  gap: 0 !important;
 }
 
 #main-menu li a {
-  border-bottom: 2px solid transparent;
-  border-radius: 0;
-  font-weight: var(--font-medium);
+  color: rgba(255, 255, 255, 0.55) !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 10px 14px !important;
+  letter-spacing: 0 !important;
+  transition: color 0.1s ease, background 0.1s ease !important;
+  background: transparent !important;
 }
 
 #main-menu li a:hover {
-  background: rgb(255 255 255 / 0.08);
-  border-bottom-color: rgb(255 255 255 / 0.48);
+  color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 #main-menu li a.selected,
 #main-menu li a.selected:hover {
-  background: rgb(255 255 255 / 0.12);
-  border-bottom-color: var(--color-neutral-0);
-}
-
-#quick-search #q {
-  border-radius: var(--radius-lg);
-  border: 1px solid rgb(255 255 255 / 0.28);
-  background: rgb(255 255 255 / 0.14);
-  color: var(--color-neutral-0);
-}
-
-#quick-search #q::placeholder {
-  color: rgb(255 255 255 / 0.58);
-}
-
-#quick-search #q:focus {
-  border-color: rgb(255 255 255 / 0.6);
-  box-shadow: var(--shadow-focus-ring);
+  color: #ffffff !important;
+  background: transparent !important;
+  border-bottom-color: #5E6AD2 !important;
+  font-weight: 600 !important;
 }
 
 /* ============================================
@@ -163,7 +278,8 @@ input[type="reset"],
 a.button,
 a.icon.icon-add,
 a.icon.icon-edit {
-  border-radius: var(--radius-lg);
+  border-radius: 6px;
+  /* Linear spec: 6px radius, not 8px */
 }
 
 input[type="submit"],
@@ -196,17 +312,21 @@ input[type="date"],
 input[type="number"],
 textarea,
 select {
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-default);
-  background: var(--color-bg-card);
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: #F4F5F8;
+  /* Linear: muted input bg */
   color: var(--color-text-primary);
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-focus-ring);
+  background: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px rgba(94, 106, 210, 0.25);
+  /* Linear: indigo focus glow */
   outline: none;
 }
 
@@ -220,9 +340,9 @@ label {
  * ============================================ */
 
 body.controller-account.action-login #main,
-body.controller-account.act#list-top,
-#list-left,
-#list-right {
+body.controller-account.action-login #list-top,
+body.controller-account.action-login #list-left,
+body.controller-account.action-login #list-right {
   display: block !important;
 }
 
@@ -278,6 +398,14 @@ table.list tbody td {
   border-bottom: 1px solid var(--color-border-default);
 }
 
+/* Flatten legacy even/odd striping for Linear-style uniform rows */
+table.list:not(.odd-even) tbody tr:nth-child(even),
+table.list:not(.odd-even) tbody tr:nth-child(odd),
+.even,
+.odd {
+  background-color: transparent !important;
+}
+
 table.list tbody tr:hover,
 table.list:not(.odd-even) tbody tr:nth-child(odd):hover,
 table.list:not(.odd-even) tbody tr:nth-child(even):hover,
@@ -295,20 +423,42 @@ table.list.issue_statuses .name a {
   font-weight: var(--font-semibold);
 }
 
-.pagination ul.pages li a,
-.pagination .page {
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-full);
-  background: var(--color-bg-card);
-  color: var(--color-text-secondary);
-  padding: 4px 10px;
+/* Context menu row selection: soft indigo instead of jarring bright blue */
+table.list tbody tr.context-menu-selection,
+table.list tbody tr.context-menu-selection td {
+  background-color: rgba(94, 106, 210, 0.07) !important;
 }
 
-.pagination ul.pages li.current,
-.pagination .current {
-  background: var(--color-primary-600);
-  color: var(--color-neutral-0);
-  border-radius: var(--radius-full);
+table.list tbody tr.context-menu-selection td a {
+  color: var(--color-accent) !important;
+}
+
+/* Issue subject link styling */
+table.list.issues td.subject a {
+  color: var(--color-text-primary) !important;
+  font-weight: 500 !important;
+}
+
+table.list.issues td.subject a:hover {
+  color: var(--color-accent) !important;
+}
+
+/* Tracker/status/priority badge-like text treatment */
+table.list.issues td.tracker,
+table.list.issues td.status,
+table.list.issues td.priority {
+  font-size: 12px !important;
+}
+
+/* Issue ID column */
+table.list.issues td.id a {
+  color: var(--color-text-muted) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+table.list.issues td.id a:hover {
+  color: var(--color-accent) !important;
 }
 
 /* ============================================
@@ -362,12 +512,9 @@ div.issue {
   box-shadow: var(--shadow-sm);
 }
 
-/* Force Remove Yellows */
-div.issue.details,
-.context-menu,
-table.list tr:hover {
-  background-color: #F4F5F8 !important;
-  /* --color-bg-subtle */
+/* Force Remove Yellows - issue details bg only */
+div.issue.details {
+  background-color: var(--color-bg-card) !important;
 }
 
 div.issue .subject h3 {
@@ -665,27 +812,1219 @@ table.list.time-entries tfoot td {
 }
 
 /* ============================================
- * RESPONSIVE
+ * LEGACY YELLOW / CONFLICT OVERRIDES
+ * Remove oc-yellow-* from conflict/warning states
  * ============================================ */
 
-@media (max-width: 1024px) {
+.conflict {
+  background-color: var(--color-warning-light) !important;
+  border-color: var(--color-warning-border) !important;
+  color: var(--color-warning-text) !important;
+}
+
+/* Wiki TOC uses oc-yellow-0 - soften to card bg */
+div.wiki ul.toc {
+  background-color: var(--color-bg-muted) !important;
+  border-color: var(--color-border-default) !important;
+}
+
+/* .nodata and .warning use oc-yellow-1 from legacy — override to neutral */
+.nodata,
+p.nodata {
+  background: transparent !important;
+  border: 1px dashed rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px !important;
+  color: var(--color-text-muted) !important;
+  padding: 52px 24px !important;
+  text-align: center !important;
+  font-size: 13px !important;
+}
+
+/* ============================================
+ * SIDEBAR — Premium Left Rail
+ * ============================================ */
+
+/* Fix legacy selected state: remove blue pill, use subtle soft highlight */
+#sidebar a.selected,
+#sidebar .selected a,
+#sidebar ul.queries a.selected,
+#sidebar li.selected > a {
+  background: rgba(94, 106, 210, 0.08) !important;
+  color: var(--color-accent) !important;
+  font-weight: 500 !important;
+}
+
+/* Sidebar section heading */
+#sidebar h3,
+#sidebar > h3:first-child {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--color-text-muted) !important;
+  margin: 0 0 6px 0 !important;
+  padding: 0 8px !important;
+}
+
+/* Sidebar links */
+#sidebar a {
+  font-size: 13px !important;
+  padding: 4px 8px !important;
+  border-radius: 5px !important;
+  color: var(--color-text-secondary) !important;
+  transition: background 80ms ease, color 80ms ease !important;
+}
+
+#sidebar a:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+}
+
+/* ============================================
+ * PAGE TITLE & CONTEXTUAL ACTIONS
+ * ============================================ */
+
+/* Page title: on the open background, not inside a card */
+#content > h2:first-child,
+#content > .contextual + h2 {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 0 14px 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  line-height: 1.3 !important;
+}
+
+/* Contextual action buttons (New issue, Administration, etc.) */
+.contextual a.icon,
+.contextual a[class*="icon-"] {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--color-text-secondary) !important;
+  padding: 5px 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  transition: all 80ms ease !important;
+}
+
+.contextual a.icon:hover,
+.contextual a[class*="icon-"]:hover {
+  background: var(--color-bg-muted) !important;
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+}
+
+/* ============================================
+ * FILTER & OPTIONS SECTIONS
+ * ============================================ */
+
+/* Collapsible section toggles look like clean headers */
+fieldset.collapsible > legend {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--color-text-secondary) !important;
+  padding: 2px 6px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  border-radius: 4px !important;
+  transition: color 0.1s ease !important;
+}
+
+fieldset.collapsible > legend:hover {
+  color: var(--color-text-primary) !important;
+}
+
+/* Query action buttons (Apply, Clear, Edit, Delete) */
+.query-totals,
+p.contextual.query-links {
+  display: flex !important;
+  gap: 4px !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+
+/* Filter row values */
+#query_form_content select,
+#filters-table select,
+table#query_form select {
+  font-size: 12px !important;
+  height: 28px !important;
+  padding: 2px 8px !important;
+}
+
+/* Column picker for Options sections */
+select[multiple] {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  padding: 4px !important;
+  font-size: 12px !important;
+}
+
+/* ============================================
+ * CALENDAR — Modern Day Grid
+ * ============================================ */
+
+table.cal {
+  border: none !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+table.cal thead th {
+  background: var(--color-bg-card) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  padding: 10px 8px !important;
+  color: var(--color-text-muted) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+table.cal tbody td {
+  background: var(--color-bg-card) !important;
+  vertical-align: top !important;
+  padding: 6px 8px !important;
+  min-height: 90px !important;
+  height: 90px !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Week number cells */
+table.cal tbody td.week-number {
+  background: var(--color-bg-muted) !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: var(--color-text-muted) !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  width: 28px !important;
+}
+
+/* Weekend cells - very subtle shade */
+table.cal tbody td.weekend {
+  background: rgba(0, 0, 0, 0.012) !important;
+}
+
+/* Today highlight */
+table.cal tbody td.today {
+  background: rgba(94, 106, 210, 0.04) !important;
+  outline: none !important;
+  position: relative !important;
+}
+
+table.cal tbody td.today::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(94, 106, 210, 0.35);
+  border-radius: 0;
+  pointer-events: none;
+}
+
+/* Day number in each cell */
+table.cal td a.day-num,
+table.cal td span.day-num {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--color-text-muted) !important;
+  margin-bottom: 4px !important;
+  line-height: 1 !important;
+}
+
+/* Today's day number */
+table.cal td.today a.day-num,
+table.cal td.today span.day-num {
+  color: var(--color-accent) !important;
+}
+
+/* Issue events in calendar cells */
+table.cal td .issue,
+table.cal td p.issue {
+  display: block !important;
+  font-size: 11px !important;
+  line-height: 1.3 !important;
+  padding: 2px 6px 2px 8px !important;
+  margin-bottom: 3px !important;
+  border-radius: 3px !important;
+  background: rgba(94, 106, 210, 0.06) !important;
+  border-left: 2px solid var(--color-accent) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+table.cal td .issue a,
+table.cal td p.issue a {
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+  font-size: 11px !important;
+}
+
+table.cal td .issue a:hover,
+table.cal td p.issue a:hover {
+  color: var(--color-accent) !important;
+  text-decoration: none !important;
+}
+
+/* ============================================
+ * ISSUE DETAIL PAGE
+ * ============================================ */
+
+/* Cleaner issue subject heading */
+div.issue .subject h3 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.3 !important;
+}
+
+/* Status/priority in issue attributes */
+.attributes .attribute .value {
+  font-size: 13px !important;
+}
+
+/* History/Journal entries */
+#history .journal {
+  border-radius: 10px !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+}
+
+/* ============================================
+ * PAGINATION — Refined
+ * ============================================ */
+
+.pagination ul.pages li a,
+.pagination .page {
+  font-size: 12px !important;
+  padding: 4px 9px !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: var(--color-bg-card) !important;
+  color: var(--color-text-secondary) !important;
+  transition: background 80ms ease !important;
+}
+
+.pagination ul.pages li a:hover {
+  background: var(--color-bg-hover) !important;
+  text-decoration: none !important;
+}
+
+.pagination ul.pages li.current,
+.pagination .current {
+  background: var(--color-primary-600) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary-600) !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+ * GANTT CHART
+ * ============================================ */
+
+.gantt_hdr {
+  background: var(--color-bg-muted) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: var(--color-text-muted) !important;
+}
+
+.gantt_subjects {
+  background: var(--color-bg-card) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.gantt_subjects .gantt-label {
+  font-size: 12px !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* ============================================
+ * RESPONSIVE (overrides)
+ * ============================================ */
+
+@media (max-width: 768px) {
   #main {
-    display: block;
+    flex-direction: column !important;
+    padding: 16px !important;
   }
 
   #sidebar {
-    width: auto;
-    border-inline-start: none;
-    border-top: 1px solid var(--color-border-default);
+    width: 100% !important;
+    order: 1 !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    padding-top: 16px !important;
+    margin-top: 16px !important;
   }
 
   #content {
-    max-inline-size: 100%;
-    padding: var(--space-4);
+    order: 0 !important;
   }
 
-  #login-form {
-    margin: 24px auto !important;
-    padding: var(--space-5) !important;
+  table.cal tbody td {
+    min-height: 60px !important;
+    height: 60px !important;
   }
+}
+
+/* ============================================
+ * ACTIVITY FEED
+ * Fix: _secondary-views.css uses dl#activity (wrong). Real HTML is div#activity > dl.
+ * ============================================ */
+
+#activity dl {
+  border-left: 2px solid rgba(0, 0, 0, 0.06) !important;
+  margin-left: 12px !important;
+  padding-left: 20px !important;
+  margin-top: 0 !important;
+}
+
+#activity dt {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--color-text-muted) !important;
+  margin: 20px 0 6px 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  position: relative !important;
+}
+
+#activity dt::before {
+  content: '' !important;
+  position: absolute !important;
+  left: calc(-20px - 5px) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--color-accent) !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--color-bg-app) !important;
+}
+
+#activity dd {
+  font-size: 13px !important;
+  color: var(--color-text-secondary) !important;
+  margin: 0 0 1px 0 !important;
+  padding: 5px 8px !important;
+  border-radius: 6px !important;
+  transition: background 80ms ease !important;
+}
+
+#activity dd:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+  text-decoration: none !important;
+}
+
+#activity dd .icon,
+#activity dd img.gravatar {
+  opacity: 0.7 !important;
+  vertical-align: middle !important;
+  margin-right: 6px !important;
+  border-radius: 50% !important;
+}
+
+#activity dd .time {
+  color: var(--color-text-muted) !important;
+  font-size: 11px !important;
+  margin-left: 6px !important;
+}
+
+/* ============================================
+ * ISSUE ATTRIBUTES GRID
+ * (div.issue .attributes > div.attribute > .label + .value)
+ * ============================================ */
+
+div.issue .attributes {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  background: var(--color-bg-card) !important;
+  margin: 16px 0 !important;
+}
+
+div.issue .attribute {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+  background: var(--color-bg-card) !important;
+}
+
+div.issue .attribute .label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  color: var(--color-text-muted) !important;
+}
+
+div.issue .attribute .value {
+  font-size: 13px !important;
+  color: var(--color-text-primary) !important;
+  font-weight: 400 !important;
+}
+
+/* ============================================
+ * CLOSED ISSUES — Visual Deemphasis
+ * ============================================ */
+
+table.list.issues tr.closed td.subject a {
+  color: var(--color-text-muted) !important;
+  text-decoration: line-through !important;
+  font-weight: 400 !important;
+}
+
+table.list.issues tr.closed td {
+  color: var(--color-text-muted) !important;
+}
+
+/* ============================================
+ * BREADCRUMB TRAIL
+ * ============================================ */
+
+p.breadcrumb,
+div#breadcrumb {
+  font-size: 12px !important;
+  color: var(--color-text-muted) !important;
+  margin-bottom: 10px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 2px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+p.breadcrumb a,
+div#breadcrumb a {
+  color: var(--color-text-muted) !important;
+  text-decoration: none !important;
+}
+
+p.breadcrumb a:hover,
+div#breadcrumb a:hover {
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+}
+
+/* ============================================
+ * MY PAGE (DASHBOARD) — 2-Column Grid
+ * body.controller-my.action-index
+ * ============================================ */
+
+body.controller-my.action-index #content {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  align-items: start !important;
+}
+
+body.controller-my.action-index #content > h2:first-child {
+  grid-column: 1 / -1 !important;
+}
+
+body.controller-my.action-index #list-top {
+  grid-column: 1 / -1 !important;
+  display: block !important;
+}
+
+body.controller-my.action-index #list-left,
+body.controller-my.action-index #list-right {
+  float: none !important;
+  width: auto !important;
+  display: block !important;
+}
+
+/* ============================================
+ * SIDEBAR — Members / Watchers / Count Badges
+ * ============================================ */
+
+/* Member avatars / name links in sidebar */
+.avatar {
+  border-radius: 50% !important;
+  object-fit: cover !important;
+}
+
+/* Count badges in sidebar */
+#sidebar .count,
+#sidebar span.count {
+  font-size: 10px !important;
+  color: var(--color-text-muted) !important;
+  font-weight: 600 !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 10px !important;
+  padding: 1px 6px !important;
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* ============================================
+ * STATUS DOT COLORS BY STATUS CLASS
+ * Redmine adds tr class like "status-1" or status names
+ * ============================================ */
+
+/* Fallback: open issues get accent blue */
+table.list.issues td.status::before {
+  background: var(--color-accent) !important;
+}
+
+/* Closed issues get gray */
+table.list.issues tr.closed td.status::before {
+  background: var(--color-text-muted) !important;
+}
+
+/* ============================================
+ * QUERY TOTALS / RESULTS SUMMARY BAR
+ * ============================================ */
+
+.query-totals {
+  font-size: 12px !important;
+  color: var(--color-text-muted) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-bottom: 8px !important;
+}
+
+.query-totals span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.query-totals .value {
+  color: var(--color-text-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+ * ATTACHMENTS — Inline File List
+ * ============================================ */
+
+.attachments p {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 12px !important;
+  padding: 3px 0 !important;
+  margin: 0 0 2px 0 !important;
+}
+
+.attachments .size,
+.attachments .author {
+  color: var(--color-text-muted) !important;
+  font-size: 11px !important;
+}
+
+/* ============================================
+ * JOURNAL/HISTORY ENTRIES — Polish
+ * ============================================ */
+
+div.journal {
+  background: var(--color-bg-card) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-radius: 10px !important;
+  padding: 14px 16px !important;
+  margin-bottom: 10px !important;
+}
+
+div.journal h4 {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: var(--color-text-muted) !important;
+  margin: 0 0 8px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+div.journal h4 a.user {
+  color: var(--color-text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+div.journal ul.details {
+  list-style: none !important;
+  margin: 8px 0 0 0 !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  color: var(--color-text-muted) !important;
+}
+
+div.journal ul.details li {
+  padding: 3px 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
+}
+
+div.journal ul.details li:last-child {
+  border-bottom: none !important;
+}
+
+div.journal.private-notes {
+  border-left: 3px solid var(--color-warning) !important;
+  background: var(--color-warning-light) !important;
+}
+
+/* ============================================
+ * MY PAGE — Widget box titles & table polish
+ * Confirmed HTML: .mypage-box > h3 > a + text node
+ * ============================================ */
+
+.mypage-box {
+  background: var(--color-bg-card) !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  margin-bottom: 16px !important;
+}
+
+/* Widget title — dark, not blue link */
+.mypage-box > h3 {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--color-text-primary) !important;
+  margin: 0 !important;
+  padding: 14px 16px 12px 16px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+  line-height: 1.3 !important;
+}
+
+.mypage-box > h3 a {
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+}
+
+.mypage-box > h3 a:hover {
+  color: var(--color-accent) !important;
+  text-decoration: none !important;
+}
+
+/* Widget drag/settings buttons (top right contextual) */
+.mypage-box > .contextual {
+  float: right !important;
+  padding: 10px 12px !important;
+  margin: 0 !important;
+}
+
+.mypage-box > .contextual a {
+  color: var(--color-text-muted) !important;
+  opacity: 0.5 !important;
+  padding: 2px 4px !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+}
+
+.mypage-box > .contextual a:hover {
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* No data empty state inside widget — no double border */
+.mypage-box p.nodata,
+.mypage-box .nodata {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 32px 20px !important;
+  font-size: 13px !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* Table inside widget — flush, no card-within-card */
+.mypage-box .autoscroll {
+  padding: 0 !important;
+}
+
+.mypage-box table.list {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  margin: 0 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.mypage-box table.list thead th {
+  background: var(--color-bg-muted) !important;
+  padding: 7px 10px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase !important;
+  color: var(--color-text-muted) !important;
+}
+
+.mypage-box table.list tbody td {
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+}
+
+/* Thin, subtle scrollbar for .autoscroll */
+.autoscroll {
+  overflow-x: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0, 0, 0, 0.12) transparent !important;
+}
+
+.autoscroll::-webkit-scrollbar {
+  height: 4px !important;
+  width: 4px !important;
+}
+
+.autoscroll::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.autoscroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12) !important;
+  border-radius: 4px !important;
+}
+
+.autoscroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* ============================================
+ * TABS — Override legacy bordered pill style
+ * Confirmed HTML: div.tabs > ul > li > a.selected
+ * ============================================ */
+
+div.tabs {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-bottom: 20px !important;
+  overflow: visible !important;
+}
+
+div.tabs > ul {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+div.tabs > ul > li {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  float: none !important;
+}
+
+div.tabs > ul > li > a {
+  display: block !important;
+  padding: 8px 14px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--color-text-muted) !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  margin: 0 !important;
+  margin-bottom: -1px !important;
+  white-space: nowrap !important;
+  transition: color 0.1s ease, border-color 0.1s ease !important;
+}
+
+div.tabs > ul > li > a:hover {
+  color: var(--color-text-primary) !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+  text-decoration: none !important;
+}
+
+div.tabs > ul > li > a.selected,
+div.tabs > ul > li > a.selected:hover {
+  color: var(--color-text-primary) !important;
+  border-bottom-color: var(--color-accent) !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+}
+
+/* Hide legacy tab scroll arrow buttons — use native flex wrap instead */
+div.tabs .tabs-buttons {
+  display: none !important;
+}
+
+/* ============================================
+ * SETTINGS FORM — Labels gray not blue
+ * Confirmed HTML: div.box.tabular.settings > p > label
+ * ============================================ */
+
+/* Force label color — beats any legacy .tabular specificity */
+div.box.tabular.settings > p > label,
+div.box.tabular > p > label,
+.settings label,
+.tabular label,
+label {
+  color: var(--color-text-secondary) !important;
+  font-weight: 500 !important;
+}
+
+/* Tab content panel spacing */
+div.tab-content {
+  padding-top: 4px !important;
+}
+
+/* Settings box — clean card */
+div.box.tabular.settings,
+div.box.tabular {
+  background: var(--color-bg-card) !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Each setting row — keep 2-column (label | input) side-by-side layout */
+div.box.tabular.settings > p,
+.settings .tabular p {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+}
+
+div.box.tabular.settings > p:last-child,
+.settings .tabular p:last-of-type {
+  border-bottom: none !important;
+}
+
+/* Label column — fixed width, text right-aligned */
+div.box.tabular.settings > p > label:first-child,
+.settings .tabular label:first-child {
+  min-width: 220px !important;
+  max-width: 220px !important;
+  flex-shrink: 0 !important;
+  text-align: right !important;
+  padding-top: 7px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--color-text-secondary) !important;
+}
+
+/* Input side — takes the rest */
+div.box.tabular.settings > p > input,
+div.box.tabular.settings > p > select,
+div.box.tabular.settings > p > textarea,
+.settings .tabular p > input,
+.settings .tabular p > select,
+.settings .tabular p > textarea {
+  flex: 1 !important;
+  max-width: 420px !important;
+}
+
+/* Hint/description text under input */
+div.box.tabular.settings em.info,
+div.box.tabular em.info {
+  font-size: 11px !important;
+  color: var(--color-text-muted) !important;
+  font-style: normal !important;
+  margin-top: 3px !important;
+  display: block !important;
+}
+
+/* ============================================
+ * GLOBAL SCROLLBAR — thin and subtle app-wide
+ * ============================================ */
+
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0, 0, 0, 0.12) transparent !important;
+}
+
+*::-webkit-scrollbar {
+  width: 6px !important;
+  height: 4px !important;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12) !important;
+  border-radius: 6px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22) !important;
+}
+
+/* ============================================
+ * AUDIT FIXES — Round 2
+ * ============================================ */
+
+/* Fix Issue 3: lost_password selector mismatch.
+ * Redmine renders <a class="lost_password">, not a link inside .lost_password */
+a.lost_password {
+  color: var(--color-accent) !important;
+  font-size: 12px !important;
+  text-decoration: none !important;
+}
+
+a.lost_password:hover {
+  color: var(--color-accent-hover) !important;
+  text-decoration: underline !important;
+}
+
+/* Fix Issue 11: overflow:hidden on table.list clips last row border.
+ * Removing border-bottom from last data row lets border-radius show cleanly. */
+table.list tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Fix Issue 13: Status dot positioning conflict.
+ * _tables.css sets physical 'left: 8px'. Explicitly cancel it so only
+ * the logical 'inset-inline-start' (set above) controls horizontal position. */
+table.list.issues td.status::before {
+  left: auto !important;
+  top: auto !important;
+}
+
+/* Fix Issue 20: .mypage-box .handle background.
+ * _secondary-views.css sets 'background: var(--color-bg-secondary)' = white.
+ * Override to muted so the drag handle is visually distinct from body. */
+.mypage-box .handle,
+.mypage-box > h3.handle {
+  background: var(--color-bg-muted) !important;
+  cursor: grab !important;
+}
+
+.mypage-box .handle:active,
+.mypage-box > h3.handle:active {
+  cursor: grabbing !important;
+}
+
+/* Fix Issue 20 corollary: ensure h3 (which may also have .handle) keeps its
+ * title styling on top of the _secondary-views.css .handle background. */
+.mypage-box > h3 {
+  background: var(--color-bg-card) !important;
+}
+
+/* Fix Issue 28: Admin menu selected state uses --oc-blue-0 (external color var).
+ * Tighten selector specificity to win over _admin.css rule. */
+#admin-menu li.selected > a,
+#admin-menu .selected > a {
+  background: rgba(94, 106, 210, 0.08) !important;
+  color: var(--color-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+ * FORM POLISH
+ * ============================================ */
+
+/* Submit/Cancel button row at form bottom */
+p.buttons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding-top: 16px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+  flex-wrap: wrap !important;
+}
+
+/* "Other formats" export links (Atom, CSV, PDF) */
+p.other-formats {
+  font-size: 11px !important;
+  color: var(--color-text-muted) !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex-wrap: wrap !important;
+}
+
+p.other-formats span {
+  font-weight: 500 !important;
+  color: var(--color-text-secondary) !important;
+}
+
+p.other-formats a {
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 4px !important;
+  padding: 2px 7px !important;
+  background: var(--color-bg-card) !important;
+  font-size: 11px !important;
+  color: var(--color-text-secondary) !important;
+  text-decoration: none !important;
+  transition: background 80ms ease !important;
+}
+
+p.other-formats a:hover {
+  background: var(--color-bg-hover) !important;
+  color: var(--color-text-primary) !important;
+  text-decoration: none !important;
+}
+
+/* ============================================
+ * PROJECT LIST — Hierarchy & Description
+ * ============================================ */
+
+/* Child project indent — dot separator already from legacy */
+table.list.projects td.name span.indent {
+  margin-inline-start: 4px !important;
+  color: var(--color-text-muted) !important;
+}
+
+/* Project description shown below name in list */
+table.list.projects td.name span.description {
+  display: block !important;
+  font-size: 11px !important;
+  color: var(--color-text-muted) !important;
+  margin-top: 1px !important;
+  font-weight: 400 !important;
+}
+
+/* ============================================
+ * USER AVATARS IN TABLES
+ * ============================================ */
+
+table.list td .gravatar,
+table.list td img.gravatar,
+.principal img.gravatar {
+  border-radius: 50% !important;
+  width: 22px !important;
+  height: 22px !important;
+  vertical-align: middle !important;
+  margin-inline-end: 6px !important;
+  object-fit: cover !important;
+}
+
+/* ============================================
+ * ISSUE DETAIL — Related Issues & Subtasks
+ * ============================================ */
+
+/* Related issues inline table */
+#relations table.list {
+  margin-top: 8px !important;
+}
+
+#relations table.list td {
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+}
+
+/* Subtasks/children list */
+#children table.list td {
+  padding: 4px 10px !important;
+  font-size: 12px !important;
+}
+
+/* ============================================
+ * PERMISSIONS / ROLES MATRIX
+ * ============================================ */
+
+table.permissions {
+  font-size: 12px !important;
+}
+
+table.permissions th {
+  background: var(--color-bg-muted) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 5px 8px !important;
+  white-space: nowrap !important;
+  color: var(--color-text-secondary) !important;
+}
+
+table.permissions td {
+  padding: 4px 8px !important;
+  text-align: center !important;
+}
+
+table.permissions td.field {
+  text-align: left !important;
+  color: var(--color-text-secondary) !important;
+  white-space: nowrap !important;
+}
+
+/* ============================================
+ * ROADMAP — Version Progress Bars
+ * ============================================ */
+
+#roadmap .version .progress {
+  height: 6px !important;
+  border-radius: var(--radius-full) !important;
+  background: var(--color-bg-muted) !important;
+  overflow: hidden !important;
+}
+
+#roadmap .version .progress .closed {
+  background: var(--color-accent) !important;
+  border-radius: var(--radius-full) !important;
+  height: 100% !important;
+}
+
+/* ============================================
+ * NOTIFICATION / WATCHED / MEMBER ICONS
+ * ============================================ */
+
+/* Watcher/notification icons in issue show */
+#watchers ul li .gravatar {
+  border-radius: 50% !important;
+  width: 18px !important;
+  height: 18px !important;
+  vertical-align: middle !important;
+}
+
+/* ============================================
+ * INLINE AUTOCOMPLETE DROPDOWN
+ * ============================================ */
+
+/* Ajax autocomplete suggestions */
+.autocomplete {
+  background: var(--color-bg-card) !important;
+  border: 1px solid var(--color-border-default) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  font-size: 13px !important;
+  padding: 4px 0 !important;
+}
+
+.autocomplete li {
+  padding: 5px 12px !important;
+  cursor: pointer !important;
+}
+
+.autocomplete li:hover,
+.autocomplete li.selected {
+  background: var(--color-bg-hover) !important;
 }

@@ -2,9 +2,12 @@
  * Redmine - project management software
  * Copyright (C) 2006-  Jean-Philippe Lang
  * This code is released under the GNU General Public License.
- * 
- * Complete UI Renewal - Phase 3
+ *
+ * Complete UI Renewal - Phase 5 (Linear-Grade Polish)
  */
+
+/* Inter font - Linear-grade typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 /* Foundation */
 @import url('open-color.css');
